@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getLS, error, log } from "../";
+import { getLS } from "../LocalStorage/index";
 
 const API_URL = "";
 
@@ -30,10 +30,9 @@ const post = async (endpoint, body, token = null) => {
       body,
       getHeaders(token)
     );
-    log(response.data);
     return response.data;
   } catch (err) {
-    error(err?.response?.data || err);
+    console.error(err?.response?.data || err);
     return err?.response?.data || err;
   }
 };
@@ -41,10 +40,9 @@ const post = async (endpoint, body, token = null) => {
 const get = async (endpoint, token = null) => {
   try {
     const response = await axios.get(API_URL + endpoint, getHeaders(token));
-    log(response.data);
     return response.data;
   } catch (err) {
-    error(err?.response?.data || err);
+    console.error(err?.response?.data || err);
     return err?.response?.data || err;
   }
 };
@@ -56,10 +54,9 @@ const put = async (endpoint, body, token = null) => {
       body,
       getHeaders(token)
     );
-    log(response.data);
     return response.data;
   } catch (err) {
-    error(err?.response?.data || err);
+    console.error(err?.response?.data || err);
     return err?.response?.data || err;
   }
 };
@@ -67,10 +64,9 @@ const put = async (endpoint, body, token = null) => {
 const remove = async (endpoint, token = null) => {
   try {
     const response = await axios.delete(API_URL + endpoint, getHeaders(token));
-    log(response.data);
     return response.data;
   } catch (err) {
-    error(err?.response?.data || err);
+    console.error(err?.response?.data || err);
     return err?.response?.data || err;
   }
 };
