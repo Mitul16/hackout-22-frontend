@@ -1,0 +1,411 @@
+.Profile {
+	width: 100%;
+	overflow-x: hidden;
+	background: #ededf2;
+	min-height: 100vh;
+}
+.Profile-block {
+	background: #fdfdfd;
+	border-radius: 16px;
+	border: 1px solid #ededed;
+	box-shadow: 0px 3px 8px -1px rgba(50, 50, 71, 0.05), 0px 0px 1px rgba(12, 26, 75, 0.24);
+}
+
+/*-----------Cover------------*/
+.Profile_Cover-Container {
+	height: 112px;
+	width: calc(100% -16px);
+	padding: 8px;
+	border-radius: 0 0 16px 16px;
+	overflow: hidden;
+	z-index: -1;
+}
+.Profile_Cover-Container img {
+	height: 100%;
+	width: 100%;
+	background: #8aa4ff;
+	border-radius: 12px;
+	object-fit: cover;
+	object-position: 0px 25%;
+}
+/* -------------------------- */
+/* ----------Details--------- */
+.Profile_details-Container {
+	/* height: ; */
+	width: calc(100% - 144px);
+	margin: 8px 16px;
+	padding: 0 56px 32px 56px;
+	margin-bottom: 0;
+	display: flex;
+	justify-content: space-between;
+}
+.Profile_details-Buttons {
+	display: flex;
+	flex-direction: column;
+	padding-top: 40px;
+	gap: 16px;
+	width: 15%;
+}
+.Profile_details-Buttons > * {
+	width: 100%;
+}
+.Profile_details-Content {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+}
+.Profile_details-ImgnName {
+	display: flex;
+	gap: 16px;
+	align-items: flex-end;
+	margin-top: -56px;
+	margin-left: -8px;
+}
+.Profile_details-Avatar-Container {
+	height: 148px;
+	width: 148px;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	border-radius: 50%;
+	background: rgba(92, 92, 92, 0.4);
+	backdrop-filter: blur(12px);
+}
+.Profile_details-Avatar-Container img {
+	height: 132px;
+	width: 132px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+.Profile_details-Name {
+	color: #5c5c5c;
+	margin-bottom: 8px;
+	font-weight: 700;
+}
+
+.Profile_details-Badges {
+	display: flex;
+	gap: 8px;
+	padding: 16px 0 0 4px;
+	flex-wrap: wrap;
+}
+.Profile_details-Badges > .Profile_details-user-role {
+	padding: 4px 16px;
+	margin: 0;
+	color: #3764ff;
+	background: #dfe6ff;
+	border: 1px solid #3764ff;
+	border-radius: 4px;
+}
+.Profile_details-Badge {
+	height: 54px;
+	width: 54px;
+}
+
+.Profile-details-About {
+	padding-top: 12px;
+	padding-left: 8px;
+	width: 90%;
+	margin: 0;
+	color: #5c5c5c;
+}
+.Profile-details-current {
+	padding-top: 16px;
+	padding-left: 8px;
+	width: 90%;
+	margin: 0;
+	color: #5c5c5c;
+}
+.Profile-details-current span {
+	font-weight: 700;
+	color: #3764ff;
+}
+.Profile_details-Main_Avatar_Container {
+	height: 200px;
+	width: 200px;
+	align-self: center;
+	margin: auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	background: rgba(92, 92, 92, 0.4);
+}
+.Profile_details-Main_Avatar_Container img {
+	height: 184px;
+	width: 184px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+/* -------------------------- */
+/* ------Profile_Blocks------ */
+.Profile_Blocks {
+	width: 100%;
+	padding: 0px 16px 32px 16px;
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+.Profile_Blocks-left {
+	width: calc((100% - 8px) * 3 / 4);
+}
+.Profile_Blocks-right {
+	width: calc((100% - 8px) * 1 / 4);
+	position: relative;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	display: flex;
+	align-self: start;
+	flex-direction: column;
+}
+/* -------------------------- */
+/*---------Socials------------*/
+.Profile_socials {
+	display: flex;
+	align-items: center;
+	padding: 8px 0 0 0;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+/* -------------------------- */
+/*---------BadgesiOwn-----------*/
+.Profile_Badges {
+	min-height: 120px;
+	width: calc(100% - 34px);
+	display: flex;
+	flex-direction: column;
+	padding: 0 16px;
+	gap: 8px;
+	padding-bottom: 16px;
+	margin-top: 16px;
+}
+.Profile_block_Heading-Container {
+	display: flex;
+	/* width: 100%; */
+	justify-content: space-between;
+	margin-top: 16px;
+	align-items: center;
+}
+.Profile_block_Heading-Container > p {
+	text-decoration: none;
+	margin: 0;
+	color: #181818;
+}
+.Profile_badges-content {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+/* -------------------------- */
+/*--------DAOsJoined----------*/
+.Profile_DAOs {
+	min-height: 240px;
+	width: calc(100% - 34px);
+	display: flex;
+	flex-direction: column;
+	padding: 0 16px;
+	gap: 8px;
+	margin-top: 16px;
+}
+/* -------------------------- */
+/*---------Projects-----------*/
+.Profile_Projects {
+	min-height: 150px;
+	width: calc(100% - 34px);
+	padding: 0 16px;
+	gap: 8px;
+	padding-bottom: 16px;
+	margin-top: 16px;
+}
+.Profile_block-Projects {
+	margin-top: 16px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+.Profile_block-Project {
+	padding: 16px;
+	border-radius: 8px;
+	position: relative;
+	width: 320px;
+	background-color: #fff;
+	color: rgba(0, 0, 0, 0.87);
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
+		0px 1px 3px 0px rgb(0 0 0 / 12%), 0 0 0 1px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+}
+.Profile_block-Project > .Project-Cover {
+	width: 100%;
+	border-radius: 8px;
+}
+.Profile_block-Project > .Project-Heading {
+	margin-bottom: 20px;
+	margin-top: 4px;
+	width: calc(100% - 32px);
+	color: #181818;
+}
+.Profile_block-Project > .Project-tags  {
+	margin: 0 0 16px 0;
+	display: flex;
+	flex-flow: row wrap;
+	gap: 8px;
+}
+.Profile_block-Project > .Project-tags > .Project-tag  {
+	margin: 0;
+	padding: 4px 8px;
+	background-color: #DFE6FF;
+	color: #3764FF;
+	box-shadow: 0 0 0 1px #3764FF;
+	border-radius: 16px;
+}
+.Profile_block-Project > .Project-Description {
+	margin: 0;
+	color: #5c5c5c;
+	padding-bottom: 56px;
+}
+.Profile_block-Project > .Project-Button {
+	position: absolute;
+	bottom: 12px;
+	right: 12px;
+	display: flex;
+	justify-content: end;
+	gap: 16px;
+	width: calc(100% - 28px);
+	align-items: center;
+}
+.Profile_block-Project > .Project-Button > .Project-DateofPublish {
+	margin-bottom: 8px;
+	color: #5c5c5c;
+}
+.Profile_block-Project > .Project-Button > a {
+	transform: scale(0.9);
+	margin-right: 0;
+	margin-bottom: 0;
+}
+.Profile-Projects_User-Buttons {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 8px 4px;
+	border-radius: 0 8px 0 8px;
+}
+
+/* -------------------------- */
+/*---------Timeline-----------*/
+.Profile_Timeline{
+    min-height: 150px;
+    width:calc(100% - 34px);
+    padding: 0 16px;
+    gap:8px;
+    padding-bottom: 16px;
+    overflow: hidden;
+    margin-top: 16px;
+}
+.Profile_Timeline .Profile_block_Heading-Container{
+    margin-top:24px;
+    margin-left:8px;
+}
+.Profile_block-Timeline{
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    margin-top: 28px;
+    position: relative;
+}
+.Profile_block-Timeline::before{
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 8px;
+    left: 20px;
+    top:20px;
+    background:#CCD3EC;
+}
+.Profile_block-TimelineCard{
+    margin-left: 48px;
+    padding: 16px;
+    border-radius:8px;
+    background:#EFEFEF;
+    position: relative;
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    box-shadow: 0px 2px 2px -1px rgb(0 0 0 / 15%), 0px 1px 1px 0px rgb(0 0 0 / 10%), 0px 1px 3px 0px rgb(0 0 0 / 8%);
+}
+.Profile_block-TimelineCard::before{
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius:50%;
+    background: #3764FF;
+    left: -32px;
+    top:8px;
+    box-shadow: 0px 0px 0px 8px rgba(55, 100, 255, 0.5);
+    transform:scale(0.8) translateY(12px);
+}
+.Timeline-Heading{
+    margin:0;
+    margin-bottom: 4px;
+    color:#181818;
+}
+.Timeline-Description{
+    margin:0;
+    margin-top:0;
+    color:#5C5C5C;
+    margin: 16px 0 0 0;
+}
+.Timeline-Heading-Container{
+    display: flex;
+    gap:4px;
+    align-items:center;
+}
+.Timeline-Heading-company{
+    text-decoration:none;
+    color:#3764FF;
+}
+.Timeline-timestamps{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color:#181818;
+    font-weight: 500;
+}
+.Profile-TimelineCard_User-Buttons{
+    padding:8px 4px;
+    position: absolute;
+    right:0px;
+    top:0px;
+}
+.Profile_details-Badges > .Profile_details-edit-user-role {
+	padding: 4px 16px;
+	margin: 0;
+	color: #3764ff;
+	background: #dfe6ff;
+	border: 1px solid #3764ff;
+	border-radius: 4px;
+	align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.Profile_details-Badges > .Profile_details-edit-user-role-empty {
+	position: relative;
+	
+}
+.Profile_details-Badges > .Profile_details-edit-user-role-empty:focus::after{
+	content: "";
+}
+.Profile_details-Badges > .Profile_details-edit-user-role-empty::after {
+	content: "+";
+	color: #3764ff;
+	font-size: 16px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);	
+}
+/* -------------------------- */
