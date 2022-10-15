@@ -103,7 +103,7 @@ const Register = (props) => {
 
     setIsLoading(true)
 
-    const response = await post('/api/auth/register', payload)
+    const response = await post('/auth/register', payload)
 
     // console.log(response)
     

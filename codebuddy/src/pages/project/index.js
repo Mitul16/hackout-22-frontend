@@ -8,9 +8,24 @@ import { ProjectCardWide } from "../../components/ProjectCard/index";
 const Project = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
+  const [search , setSearch] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [projects, setProjects] = useState([]);
 
+  const [projects, setProjects] = useState([]);
+  const handleSearchChange = (e)=>{
+    setSearch(e.target.value);
+  }
+  const handleSearchSubmit = async ()=>{
+     const response = await get(`/project/list?text=${search}`);
+     console.log(response.data);
+     if (response.data.status === "OK") {
+       setProjects(response.data.data);
+       setSearch("");
+
+     } else {
+       toast.error(response.error);
+     }
+  }
   const getProjectsData = async (e) => {
     const response = await get("/project/list");
     console.log(response.data);
@@ -41,14 +56,16 @@ const Project = () => {
               style={{
                 outline: "none",
               }}
+              value={search}
+              onChange={handleSearchChange}
               className="text-dark-300 dark:text-light-100 bg-[#202020] flex-row placeholder:dark:text-light-300 rounded dark:focus:bg-dark-200 w-full p-3 border border-[#30363D]"
             />
           </div>
           <div>
-            <Button type="submit">Search</Button>
+            <Button type="submit" onClick={handleSearchSubmit}>Search</Button>
           </div>
         </div>
-        <div className="col-span-2 grid grid-cols-2 grid-flow-col gap-4 md:gap-4 mt-4">
+        <div className=" grid grid-cols-2  gap-4 md:gap-4 mt-4">
           {projects?.length > 0
             ? projects.map((project, i) => (
                 <ProjectCardWide variant="wide" projectData={project} key={i} />

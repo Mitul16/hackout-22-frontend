@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLS } from "../LocalStorage/index";
 
-const API_URL = "http://localhost:8000/api";
+const API_URL = "https://hackout-22.herokuapp.com/api";
 
 const getAccessToken = () => {
   return getLS("jwt_token");

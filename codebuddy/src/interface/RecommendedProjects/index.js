@@ -18,7 +18,7 @@ export const RecommendedProjects = ({
                 projectsList.length > 0 &&
                 (<div className="w-full flex-col mb-16">
                 {
-                    projectsList.map((project, i) => <ProjectCardSmall projectData={project} key={i}/>)
+                    projectsList.map((project, i) => <ProjectCardSmall projectData={project[1]} key={i}/>)
                 }
                 </div>)
             }

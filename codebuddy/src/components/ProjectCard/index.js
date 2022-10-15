@@ -7,7 +7,7 @@ export const ProjectCardSmall = ({
 	return (
         <div className="w-full py-2 mt-1 border-b border-[#30363D]">
           <div className="w-full flex text-lg dark:text-white font-bold">
-            {projectData.title? projectData.title : "Title"}
+            {projectData.name? projectData.name : "Name"}
           </div>
           <div className="w-full flex text-sm dark:text-light-100">
             {projectData.description? projectData.description : "Description"}
@@ -31,7 +31,7 @@ export const ProjectCardWide = ({
     <div className="w-full mt-4 bg-dark-200 px-5 py-6 pb-10 rounded-lg border border-[#30363D]">
         <div className="w-full flex text-lg dark:text-white font-bold">
           <p className="pr-1">
-              {projectData.title? projectData.title : "Project Title"}
+              {projectData.name? projectData.name : "Project Title"}
           </p>
         </div>
         <div className="w-full flex text-sm dark:text-light-200">

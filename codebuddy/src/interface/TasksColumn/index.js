@@ -1,5 +1,5 @@
 import {TaskCardWide} from '../../components/TaskCard/index'
-
+import TaskModal from '../../components/taskModal';
 export const TaskColumn = ({
     tasksList
 }) => {

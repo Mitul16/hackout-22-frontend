@@ -9,17 +9,20 @@ import {TaskColumn} from '../../interface/TasksColumn/index'
 
 const Dashboard = ()=>{
 	const [dashboardData, setDashboardData] = useState({});
+  const [change , setChange] = useState('');
+  const [recommendedProjects, setRecommendedProjects] = useState([]);
 	const [errorMessage, setErrorMessage] = useState("");
-	
 	const getDashboardData = async e => {
 		const data = await get("/project/list_recommended");
-		setDashboardData(data);
-		console.log(data);
+    console.log(data.data.data);
+		setRecommendedProjects(data.data.data);
+		console.log(recommendedProjects);
+    setChange("change");
 		toast.success("Dashboard details fetched Successfully!");
 	};
 	useEffect(() => {
 		getDashboardData();
-	}, []);
+	}, [change]);
 
 	return (
     <div className="flex gap-6 flex-row px-8 py-12 pr-24">
@@ -54,8 +57,8 @@ const Dashboard = ()=>{
       <div className="flex-col w-1/2 mt-12">
         <RecommendedProjects
           projectsList={
-            dashboardData.projects
-              ? dashboardData.projects
+            recommendedProjects
+              ? recommendedProjects
               : [
                   {
                     title: "title",
