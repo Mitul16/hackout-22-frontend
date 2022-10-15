@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
 import Profile from './pages/profile/index'
+import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -23,8 +24,7 @@ function App() {
 
   useEffect(() => {
     const jwt_token = getAccessToken();
-    console.log(jwt_token)
-    if (!!jwt_token) setIsLoggedIn(jwt_token);
+    if (!!jwt_token) setIsLoggedIn(!!jwt_token);
   }, [isLoggedIn])
   return (
     <div className="w-full flex">
@@ -72,7 +72,7 @@ function App() {
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
-                    <Profile viewState="user" />{' '}
+                    <Project viewState="user" />{' '}
                   </Protected>
                 }
               />
