@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
-import toast from 'react-hot-toast'
-import "./index.css";
-import { post } from '../../utils/API/index'
-import { getAccessToken } from '../../utils/API/index'
-import { storeLS } from '../../utils/LocalStorage/index'
-import { Button } from '../../components/button/index'
-import validator from "validator";
-import { TextInput } from '../../components/textInput/index'
-import { FiMail, FiUser, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
-import { Typography, TextField } from "@mui/material";
-import PasswordStrengthIndicator from "react-password-strength-bar";
 import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
-import { FiInfo } from "react-icons/fi";
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { FiEye, FiEyeOff, FiLock, FiMail, FiUser } from "react-icons/fi";
+import PasswordStrengthIndicator from "react-password-strength-bar";
+import { useLocation, useNavigate } from 'react-router-dom';
+import validator from "validator";
+import { Button } from '../../components/button/index';
+import { TextInput } from '../../components/textInput/index';
+import { getAccessToken, post } from '../../utils/API/index';
+import { storeLS } from '../../utils/LocalStorage/index';
+// import "./index.css";
 const passwordValidator = require('password-validator')
 
 
@@ -99,30 +96,23 @@ const Register = (props) => {
     e?.preventDefault()
 
     const payload = {
-      login,
+      username,
+      email,
       password,
     }
 
     setIsLoading(true)
 
-    const response = await post('auth/signin', payload)
-    if (response.status === 'error') {
+    const response = await post('/api/auth/register', payload)
+
+    // console.log(response)
+    
+    if (response.status === 201) {
+      storeLS('jwt_token', response.data.token)
+      navigate("../")
+    } else {
       toast.error(response.message)
       setIsLoading(false)
-    }
-
-    if (response.status === 'OK') {
-      storeLS('jwt_token', response.message.accessToken)
-      if (
-        response.message.is_onboarding_complete === 'false' ||
-        response.message.is_onboarding_complete === false
-      ) {
-        if (response.message.is_employer) {
-          navigate('/onboarding/recruiter/profile')
-        } else {
-          navigate('/onboarding/candidate/profile')
-        }
-      } else navigate('/')
     }
   }
 
@@ -131,6 +121,7 @@ const Register = (props) => {
       setIsLoggedIn(null)
     } else if (isLoggedIn) navigate('/')
   }, [isLoggedIn, setIsLoggedIn, navigate])
+  
   return (
     <div className="flex flex-col h-screen px-8 md:flex-row px-0">
       <div className="absolute top-12 right-0 left-1 md:ml-12 w-fit">

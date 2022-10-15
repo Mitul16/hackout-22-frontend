@@ -8,7 +8,6 @@ import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
 import Profile from './pages/profile/index'
-// import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -19,7 +18,8 @@ import { Toaster } from 'react-hot-toast'
 import "./styles/globals.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+
+  const [isLoggedIn, setIsLoggedIn] = useState(!!getAccessToken())
 
   useEffect(() => {
     const jwt_token = getAccessToken();
@@ -32,7 +32,7 @@ function App() {
       <Router>
         {isLoggedIn ? (
           <SideNav
-            loginStatus={setIsLoggedIn}
+            isLoggedIn={isLoggedIn}
           />
         ) : (
           ''
@@ -41,12 +41,12 @@ function App() {
           <div className="flex-1">
             <Routes>
               <Route
-                  path="dashboard"
-                  element={
-                    // <Protected isLoggedIn={isLoggedIn}>
-                      <Dashboard />
-                    // </Protected>
-                  }
+                path="/"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    <Dashboard />
+                  </Protected>
+                }
               />
               <Route
                 path="login"
@@ -67,15 +67,15 @@ function App() {
                   </Protected>
                 }
               />
-              {/* <Route
+              <Route
                 path="project"
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
-                    <Project viewState="user" />{' '}
+                    <Profile viewState="user" />{' '}
                   </Protected>
                 }
-              /> */}
+              />
               <Route
                 path="profile/:id"
                 element={

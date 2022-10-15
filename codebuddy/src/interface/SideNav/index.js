@@ -11,7 +11,9 @@ const SideNav = ({isLoggedIn }) => {
   const navigate = useNavigate();
   const [showSignOutModal, setShowSignOutModal] = useState(false);
   
-  if (location.pathname === "/" && !isLoggedIn) return;
+  // console.log(location)
+
+  if (!isLoggedIn || location.pathname.includes("/login") || location.pathname.includes("/register")) return;
   
   return (
     <div className="hidden md:flex w-80 h-screen sticky top-0 p-8 justify-between flex-col">

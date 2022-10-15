@@ -9,7 +9,7 @@ const Protected = ({ isLoggedIn, children }) => {
     }
     
     toast.error("You are not logged in!")
-    return <Navigate to="/" replace />;
+    return <Navigate to="/login" replace />;
 
 };
 

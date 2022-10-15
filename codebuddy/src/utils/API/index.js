@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLS } from "../LocalStorage/index";
 
-const API_URL = "";
+const API_URL = "http://172.20.51.64:8000";
 
 const getAccessToken = () => {
   return getLS("jwt_token");
@@ -30,7 +30,7 @@ const post = async (endpoint, body, token = null) => {
       body,
       getHeaders(token)
     );
-    return response.data;
+    return response;
   } catch (err) {
     console.error(err?.response?.data || err);
     return err?.response?.data || err;
