@@ -1,6 +1,6 @@
 @import "./antd.css";
 @import "./antd-mod.css";
-@import "./react-calendar-heatmap.css";
+/* @import "./react-calendar-heatmap.css"; */
 
 @tailwind base;
 @tailwind components;
