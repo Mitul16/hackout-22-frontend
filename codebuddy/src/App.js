@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Protected from './protected'
 
-import NavBar from './components/navigation/NavBar'
+import SideNav from './interface/SideNav/index'
 import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
@@ -15,6 +15,8 @@ import NoMatch from './pages/404/index'
 import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
 
+import "./styles/globals.css";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
 
@@ -23,14 +25,12 @@ function App() {
     if (!!jwt_token) setIsLoggedIn(jwt_token);
   }, [isLoggedIn])
 
-
-
   return (
     <>
       <Toaster />
       <Router>
         {isLoggedIn ? (
-          <NavBar
+          <SideNav
             loginStatus={setIsLoggedIn}
           />
         ) : (

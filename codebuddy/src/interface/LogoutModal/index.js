@@ -1,14 +1,14 @@
 import { Modal } from "antd";
-import { useRouter } from "next/router";
-import { removeLS } from "../../utils";
+import { useNavigate } from "react-router-dom";
+import { removeLS } from "../../utils/LocalStorage/index";
 import { FiAlertTriangle } from "react-icons/fi";
 
-export default function LogoutModal({ visible, setVisible }) {
-  const router = useRouter();
+export const LogoutModal = ({ visible, setVisible }) => {
+  const navigate = useNavigate();
 
   const onOk = () => {
     removeLS("jwt_token");
-    router.push("/signin");
+    navigate("/signin");
     hideModal();
   };
 
