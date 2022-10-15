@@ -22,12 +22,13 @@ function Dashboard() {
 	}, []);
 
 	return (
-    <section className="Dashboard">
-	  <div class="Dashboard_Blocks-left">
+    <section className="flex gap-6 flex-row px-8 py-12">
+	  	<div className="w-full">
+			<h2 className={"hidden md:block text-2xl font-bold text-dark-300 dark:text-white"}>
+				Tasks
+			</h2>
       </div>
-	  <div class="Dashboard_Blocks-center">
-      </div>
-      <div class="Dashboard_Blocks-right">
+	  <div className="hidden md:flex w-1/2">
       </div>
     </section>
   );

@@ -26,7 +26,7 @@ function App() {
   }, [isLoggedIn])
 
   return (
-    <>
+    <div className="w-full flex">
       <Toaster />
       <Router>
         {isLoggedIn ? (
@@ -36,53 +36,57 @@ function App() {
         ) : (
           ''
         )}
-        <Routes>
-          {isLoggedIn ? (
-            <Route
-              path="dashboard"
-              element={
-                <Protected isLoggedIn={isLoggedIn}>
-                  <Dashboard />
-                </Protected>
-              }
-            />
-          ) : (
-            ''
-          )}
+        <div className="relative w-full">
+          <div className="flex-1">
+            <Routes>
+              {isLoggedIn ? (
+                <Route
+                  path="dashboard"
+                  element={
+                    <Protected isLoggedIn={isLoggedIn}>
+                      <Dashboard />
+                    </Protected>
+                  }
+                />
+              ) : (
+                ''
+              )}
 
-          <Route
-            path="login"
-            element={
-              <Login
-                loginStatus={setIsLoggedIn}
+              <Route
+                path="login"
+                element={
+                  <Login
+                    loginStatus={setIsLoggedIn}
+                  />
+                }
               />
-            }
-          />
-          <Route path="register" element={<Register />} />
-          <Route path="forget-password" element={<ForgetPassword />} />
-          <Route
-            path="profile"
-            element={
-              <Protected isLoggedIn={isLoggedIn}>
-                {' '}
-                <Profile viewState="user" />{' '}
-              </Protected>
-            }
-          />
-          <Route
-            path="profile/:id"
-            element={
-              <Protected isLoggedIn={isLoggedIn}>
-                {' '}
-                <Profile viewState="view" />{' '}
-              </Protected>
-            }
-          />
-          <Route path="error" element={<ErrorPage />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
+              <Route path="register" element={<Register />} />
+              <Route path="forget-password" element={<ForgetPassword />} />
+              <Route
+                path="profile"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    {' '}
+                    <Profile viewState="user" />{' '}
+                  </Protected>
+                }
+              />
+              <Route
+                path="profile/:id"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    {' '}
+                    <Profile viewState="view" />{' '}
+                  </Protected>
+                }
+              />
+              <Route path="error" element={<ErrorPage />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+          </div>
+        </div>
       </Router>
-    </>
+    </div>
   )
 }
 
