@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {get} from "../../utils/API/index";
-import ProfileAvatar from "../../assets/images/ProfileAvatar.png"
-import { SkillTag } from "../../components/skillTag/index";
+import ProfileAvatar from "../../assets/images/ProfileAvatar.png";
 import { ProjectCardWide } from "../../components/ProjectCard/index";
+import { SkillTag } from "../../components/skillTag/index";
+import { get, getAccessToken } from "../../utils/API/index";
 
 const Profile = ({dashboard}) => {
   // const navigate = useNavigate();
@@ -13,7 +13,8 @@ const Profile = ({dashboard}) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const getUser = async (_) => {
-    const response = await get(`profile/details/${dashboard.username}`);
+    console.log(getAccessToken());
+    const response = await get(`/api/user/get-user`, getAccessToken());
     setUser(response.data);
   };
 

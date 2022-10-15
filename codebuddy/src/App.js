@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css'
 import Protected from './protected'
 
 import SideNav from './interface/SideNav/index'
-import Dashboard from './pages/dashboard/index'
-import Login from './pages/login/index'
-import Register from './pages/register/index'
-import Profile from './pages/profile/index'
-import ForgetPassword from './pages/forgot-password/index'
-import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
+import Dashboard from './pages/dashboard/index'
+import ErrorPage from './pages/error/index'
+import ForgetPassword from './pages/forgot-password/index'
+import Login from './pages/login/index'
+import Profile from './pages/profile/index'
+import Register from './pages/register/index'
 
-import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
+import { getAccessToken } from './utils/API/index'
 
-import "./styles/globals.css";
+import "./styles/globals.css"
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     const jwt_token = getAccessToken();
     console.log(jwt_token)
-    if (!!jwt_token) setIsLoggedIn(jwt_token);
+    if (jwt_token) setIsLoggedIn(true);
   }, [isLoggedIn])
   return (
     <div className="w-full flex">
@@ -63,7 +63,7 @@ function App() {
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
-                    <Profile viewState="user" />{' '}
+                    <Profile dashboard={true} />{' '}
                   </Protected>
                 }
               />
