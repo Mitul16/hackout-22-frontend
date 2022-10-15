@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FiEye, FiEyeOff, FiLock, FiUser } from 'react-icons/fi';
 import { useNavigate } from "react-router-dom";
 import { Button } from '../../components/button/index';
@@ -35,12 +36,14 @@ const Login = () => {
 	
 		setIsLoading(true);
 	
-		const response = await post("/api/auth/login", payload);
+		const response = await post("/auth/login", payload);
 		console.log(response);
 		
 		if (response.status === 200) {
 		  storeLS("jwt_token", response.data.token);
 		  navigate("../")
+		}else{
+			toast.error(response.error)
 		}
 
 		setIsLoading(false);

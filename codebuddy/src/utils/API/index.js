@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getLS } from "../LocalStorage/index";
 
-const API_URL = "http://localhost:8000/";
+const API_URL = "http://localhost:8000/api";
 
 const getAccessToken = () => {
   return getLS("jwt_token");
@@ -9,13 +9,15 @@ const getAccessToken = () => {
 
 const getHeaders = (token) => {
   if (!token) token = getAccessToken();
-  if (token)
+  if (token){
+    console.log(token);
     return {
       headers: {
         Accept: "application/json",
-        "x-access-token": token,
+        Authorization: `Bearer ${token}`,
       },
     };
+  }
   return {
     headers: {
       Accept: "application/json",
@@ -39,8 +41,9 @@ const post = async (endpoint, body, token = null) => {
 
 const get = async (endpoint, token = null) => {
   try {
+    console.log(token);
     const response = await axios.get(API_URL + endpoint, getHeaders(token));
-    return response.data;
+    return response;
   } catch (err) {
     console.error(err?.response?.data || err);
     return err?.response?.data || err;

@@ -8,19 +8,22 @@ import { ProjectCardWide } from "../../components/ProjectCard/index";
 const Project = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
-
-  const [dashboardData, setDashboardData] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
   const [projects, setProjects] = useState([]);
 
-  const getDashboardData = async (e) => {
-    // const data = await get("profile/user_dashboard")
-    // setDashboardData(data);
-    // console.log(data);
-    toast.success("Dashboard details fetched Successfully!");
+  const getProjectsData = async (e) => {
+    const response = await get("/project/list");
+    console.log(response.data);
+    if(response.data.status ==="OK"){
+         setProjects(response.data.data);
+         toast.success("Dashboard details fetched Successfully!");
+         return;
+    }else{
+        toast.error(response.error);
+    }
   };
   useEffect(() => {
-    getDashboardData();
+    getProjectsData();
   }, []);
 
   return (
