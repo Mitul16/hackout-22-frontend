@@ -23,9 +23,9 @@ function App() {
 
   useEffect(() => {
     const jwt_token = getAccessToken();
+    console.log(jwt_token)
     if (!!jwt_token) setIsLoggedIn(jwt_token);
   }, [isLoggedIn])
-
   return (
     <div className="w-full flex">
       <Toaster />
