@@ -25,13 +25,13 @@ html {
   --dark-300: #141517;
   --dark-navbar: #141517c9;
   --white: #ffffff;
-  --black: #000000;
+  --black:#141517;;
   --transparent: transparent;
 }
 
 body {
   overflow-x: hidden;
-  background: var(--lightblue-100);
+  background: var(--black);
 }
 
 html.dark body {
