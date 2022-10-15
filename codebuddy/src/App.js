@@ -18,7 +18,7 @@ import { Toaster } from 'react-hot-toast'
 import "./styles/globals.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   useEffect(() => {
     const jwt_token = getAccessToken();
@@ -39,7 +39,6 @@ function App() {
         <div className="relative w-full">
           <div className="flex-1">
             <Routes>
-              {isLoggedIn ? (
                 <Route
                   path="dashboard"
                   element={
@@ -48,10 +47,6 @@ function App() {
                     </Protected>
                   }
                 />
-              ) : (
-                ''
-              )}
-
               <Route
                 path="login"
                 element={
@@ -60,7 +55,7 @@ function App() {
                   />
                 }
               />
-              <Route path="register" element={<Register />} />
+              <Route path="register" element={ <Register />} />
               <Route path="forget-password" element={<ForgetPassword />} />
               <Route
                 path="profile"

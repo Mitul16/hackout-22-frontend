@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import {useLocation,useNavigate} from "react-router-dom";
 
 
-function Dashboard() {
+const Dashboard = ()=>{
 	const navigate = useNavigate();
 	const { state } = useLocation();
 
@@ -12,9 +12,9 @@ function Dashboard() {
 	const [errorMessage, setErrorMessage] = useState("");
 	
 	const getDashboardData = async e => {
-		const data = await get("profile/user_dashboard")
-		setDashboardData(data);
-		console.log(data);
+		// const data = await get("profile/user_dashboard")
+		// setDashboardData(data);
+		// console.log(data);
 		toast.success("Dashboard details fetched Successfully!");
 	};
 	useEffect(() => {
@@ -24,7 +24,7 @@ function Dashboard() {
 	return (
     <section className="flex gap-6 flex-row px-8 py-12">
 	  	<div className="w-full">
-			<h2 className={"hidden md:block text-2xl font-bold text-dark-300 dark:text-white"}>
+			<h2 className="hidden md:block text-2xl font-bold text-dark-300 dark:text-white">
 				Tasks
 			</h2>
       </div>
