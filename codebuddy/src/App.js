@@ -12,6 +12,7 @@ import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
+import Project from "./pages/project/index"
 
 import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
@@ -68,7 +69,7 @@ function App() {
                 }
               />
               <Route
-                path="project"
+                path="projects"
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}

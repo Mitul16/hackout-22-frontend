@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 const NavLinksList = [
   {
     icon: <FiHome />,
@@ -32,13 +33,13 @@ export const NavLink = ({
   icon,
   title,
   isSelected,
-  onClick = () => {},
   standAlone = false,
 }) => {
+  const navigate = useNavigate();
   return (
     <>
       {href ? (
-        <Link href={href}>
+        <Link to={href}>
           <a
             href={href}
             className={`block ${
@@ -52,7 +53,9 @@ export const NavLink = ({
             } ${
               standAlone ? "" : "flex-col md:flex-row"
             } md:rounded-lg flex items-center gap-2 md:gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-            onClick={onClick}
+            onClick={()=>{
+              navigate(href)
+            }}
           >
             <span className="text-2xl md:text-xl">{icon}</span>
             <span>{title}</span>
@@ -70,7 +73,10 @@ export const NavLink = ({
                     : " text-dark-300 dark:text-light-300 flex-col md:flex-row"
                 } hover:bg-light-100 dark:hover:bg-dark-300`
           } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-          onClick={onClick}
+          onClick={()=>{
+            console.log("GGGg");
+            navigate(href)
+          }}
         >
           <span className="text-2xl md:text-xl">{icon}</span>
           <span>{title}</span>
