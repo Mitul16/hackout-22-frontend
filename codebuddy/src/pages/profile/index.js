@@ -10,19 +10,22 @@ const Profile = ({dashboard}) => {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [user, setUser] = useState({});
+  const [change, setChange] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const getUser = async (_) => {
     console.log(getAccessToken());
     const response = await get(`/api/user/get-user`, getAccessToken());
     setUser(response.data);
+    setChange("change");
+    console.log(user);
   };
 
   useEffect(() => {
     if (dashboard) {
       getUser();
     }
-  }, [dashboard]);
+  }, [change]);
 
   //  if (!user || isLoading) return <Loader/>;
   const ToggleButton = ({ href, title, selected}) => {
@@ -67,25 +70,25 @@ const Profile = ({dashboard}) => {
         >
           <div>
             <h3 className="hidden md:block text-3xl font-bold text-dark-300 dark:text-white pt-2 mb-1">
-              {user.name ? user.name : "Manav Agarwal"}
+              {/* user?.user?.name ? user?.user?.name : */ "Manav Agarwal"}
             </h3>
           </div>
           <div>
             <h3 className="hidden md:block text-xl font-bold text-[#A6A7AB]">
-              {user.username ? "@" + user.username : "@Hades-012"}
+              {user?.user?.username ? "@" + user?.user?.username : "@Hades-012"}
             </h3>
           </div>
           <div className="py-2 w-5/6">
             <p className="hidden md:block text-lg text-[#A6A7AB]">
-              {user.description
-                ? "@" + user.description
-                : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
+              {/* user?.user?.description
+                ? "@" + user?.user?.description
+                : */ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
             </p>
             <div className="flex gap-2">
               {
-                user.tags?.length > 0 
-                ? user.tags.map((tag,i) => <SkillTag variant={'base'} tagValue={tag} key={i}/>)
-                : ['NodeJS','CSS','React','NextJS'].map((tag,i) => <SkillTag variant={'base'} tagValue={tag} key={i}/>)
+                /* user?.user?.skills?.length > 0 
+                ? user.user.skills.map((tag,i) => <SkillTag variant={'base'} tagValue={tag} key={i}/>)
+                : */ ['NodeJS','CSS','React','NextJS'].map((tag,i) => <SkillTag variant={'base'} tagValue={tag} key={i}/>)
               }
             </div>
           </div>
@@ -103,12 +106,12 @@ const Profile = ({dashboard}) => {
         </div>
         <div className="flex-col h-full md:gap-4 mt-4">
           {
-            user.projects?.length > 0 
-            ? user.projects.map((project,i) => <ProjectCardWide variant='wide' projectData={project} key={i}/>)
+            /* user?.ongoingProjects?.length > 0 
+            ? user?.ongoingProjects.map((project,i) => <ProjectCardWide variant='wide' projectData={project} key={i}/>)
             // : (<div className="w-full flex align-center justify-center">
             //     <p className="text-lg text-[#A6A7AB] ">{'You Currently have no projects'}</p>
             //   </div>)
-            : [{title:'gwdvuyw'},{title:'djegdywb'}].map((project,i) => <ProjectCardWide variant='wide' projectData={project} key={i}/>)
+            : */ [{title:'gwdvuyw'},{title:'djegdywb'}].map((project,i) => <ProjectCardWide variant='wide' projectData={project} key={i}/>)
           }
         </div>
       </div>
