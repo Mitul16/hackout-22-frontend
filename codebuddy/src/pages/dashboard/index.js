@@ -8,16 +8,13 @@ import {PastProjects} from '../../interface/PastProjects/index'
 import {TaskColumn} from '../../interface/TasksColumn/index'
 
 const Dashboard = ()=>{
-	const navigate = useNavigate();
-	const { state } = useLocation();
-
 	const [dashboardData, setDashboardData] = useState({});
 	const [errorMessage, setErrorMessage] = useState("");
 	
 	const getDashboardData = async e => {
-		// const data = await get("profile/user_dashboard")
-		// setDashboardData(data);
-		// console.log(data);
+		const data = await get("/project/list_recommended");
+		setDashboardData(data);
+		console.log(data);
 		toast.success("Dashboard details fetched Successfully!");
 	};
 	useEffect(() => {
