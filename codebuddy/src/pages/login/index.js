@@ -37,7 +37,7 @@ const Login = () => {
 	
 		setIsLoading(true);
 	
-		const response = await post("auth/signin", payload);
+		const response = await post("auth/login", payload);
 		if (response.status === "error") {
 		  toast.error(response.message);
 		  setIsLoading(false);

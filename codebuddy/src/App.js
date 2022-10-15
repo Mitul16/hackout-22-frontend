@@ -8,7 +8,7 @@ import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
 import Profile from './pages/profile/index'
-// import Project from './pages/project/index'
+import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -19,7 +19,7 @@ import { Toaster } from 'react-hot-toast'
 import "./styles/globals.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   useEffect(() => {
     const jwt_token = getAccessToken();
@@ -64,6 +64,15 @@ function App() {
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
                     <Profile viewState="user" />{' '}
+                  </Protected>
+                }
+              />
+              <Route
+                path="project"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    {' '}
+                    <Project viewState="user" />{' '}
                   </Protected>
                 }
               />

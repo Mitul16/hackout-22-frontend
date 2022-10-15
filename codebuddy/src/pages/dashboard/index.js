@@ -26,18 +26,70 @@ const Dashboard = ()=>{
 
 	return (
     <div className="flex gap-6 flex-row px-8 py-12 pr-24">
-	  	<div className="w-full">
-			<div className="text-2xl font-bold dark:text-white">
-				Tasks
-			</div>
-			<div className="flex-col">
-				<TaskColumn tasksList={dashboardData.projects ? dashboardData.tasks : [{title:'title', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',tags:['NodeJS', 'CSS'], completeionAmt:0.65}]}/>
-			</div>
-		</div>
-		<div className="flex-col w-1/2 mt-12">
-			<RecommendedProjects projectsList={dashboardData.projects ? dashboardData.projects : [{title:'title', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',tags:['NodeJS', 'CSS']}]} />
-			<PastProjects projectsList={dashboardData.projects ? dashboardData.projects : [{title:'title', description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...',tags:['NodeJS', 'CSS']}]}/>
-		</div>
+      <div className="w-full">
+        <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
+          Tasks
+        </h3>
+        <div className="flex-col">
+          <TaskColumn
+            tasksList={
+              dashboardData.projects
+                ? dashboardData.tasks
+                : [
+                    {
+                      title: "title",
+                      description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+                      tags: ["NodeJS", "CSS"],
+                      completeionAmt: 0.65,
+                    },
+                    {
+                      title: "Hackout",
+                      description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                      tags: ["NodeJS", "CSS", "React.JS", "Flutter"],
+                    },
+                  ]
+            }
+          />
+        </div>
+      </div>
+      <div className="flex-col w-1/2 mt-12">
+        <RecommendedProjects
+          projectsList={
+            dashboardData.projects
+              ? dashboardData.projects
+              : [
+                  {
+                    title: "title",
+                    description:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+                    tags: ["NodeJS", "CSS"],
+                  },
+                  {
+                    title: "Hackout",
+                    description:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                    tags: ["NodeJS", "CSS", "React.JS", "Flutter"],
+                  },
+                ]
+          }
+        />
+        <PastProjects
+          projectsList={
+            dashboardData.projects
+              ? dashboardData.projects
+              : [
+                  {
+                    title: "title",
+                    description:
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+                    tags: ["NodeJS", "CSS"],
+                  },
+                ]
+          }
+        />
+      </div>
     </div>
   );
 }

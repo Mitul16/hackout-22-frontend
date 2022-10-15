@@ -105,7 +105,7 @@ const Register = (props) => {
 
     setIsLoading(true)
 
-    const response = await post('auth/signin', payload)
+    const response = await post('auth/register', payload)
     if (response.status === 'error') {
       toast.error(response.message)
       setIsLoading(false)

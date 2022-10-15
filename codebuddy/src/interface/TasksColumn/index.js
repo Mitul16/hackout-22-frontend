@@ -5,7 +5,7 @@ export const TaskColumn = ({
 }) => {
 
 	return (
-        <div className="w-full flex-col px-2 py-2 mt-4">
+        <div className="w-full flex-col px-2 py-2 mt-4 gap-3">
             {
                 tasksList.length > 0 ?
                 (<div className="w-full flex-col mb-12">

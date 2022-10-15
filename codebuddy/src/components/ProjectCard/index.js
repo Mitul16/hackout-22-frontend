@@ -28,7 +28,7 @@ export const ProjectCardWide = ({
 }) => {
 
   return(
-    <div className="w-full mt-4 bg-dark-200 px-5 py-3 rounded-lg border-solid border-[#30363D]">
+    <div className="w-full mt-4 bg-dark-200 px-5 py-6 pb-10 rounded-lg border border-[#30363D]">
         <div className="w-full flex text-lg dark:text-white font-bold">
           <p className="pr-1">
               {projectData.title? projectData.title : "Project Title"}

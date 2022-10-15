@@ -3,8 +3,8 @@ export const TaskCardWide = ({
 }) => {
 
     return (
-          <div className="w-fullmt-1 bg-dark-200 px-4 py-2 rounded-lg border-solid border-[#30363D]">
-            <div className="w-full flex text-lg dark:text-white font-bold">
+          <div className="w-fullmt-1 bg-dark-200 px-4 py-2 rounded-lg border border-[#30363D] m-3">
+            <div className="w-full flex text-lg dark:text-white font-bold pt-2">
               <p className="pr-1">
                   {taskData.title? taskData.title : "Task Title"}
               </p>
