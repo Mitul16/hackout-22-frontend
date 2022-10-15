@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
 import Profile from './pages/profile/index'
+// import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -39,14 +40,14 @@ function App() {
         <div className="relative w-full">
           <div className="flex-1">
             <Routes>
-                <Route
-                  path="/"
+              <Route
+                  path="dashboard"
                   element={
-                    <Protected isLoggedIn={isLoggedIn}>
+                    // <Protected isLoggedIn={isLoggedIn}>
                       <Dashboard />
-                    </Protected>
+                    // </Protected>
                   }
-                />
+              />
               <Route
                 path="login"
                 element={
@@ -66,6 +67,15 @@ function App() {
                   </Protected>
                 }
               />
+              {/* <Route
+                path="project"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    {' '}
+                    <Project viewState="user" />{' '}
+                  </Protected>
+                }
+              /> */}
               <Route
                 path="profile/:id"
                 element={

@@ -1,16 +1,19 @@
+import React, { useState, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import "./index.css";
+import { post } from '../../utils/API/index'
+import { getAccessToken } from '../../utils/API/index'
+import { storeLS } from '../../utils/LocalStorage/index'
+import { Button } from '../../components/button/index'
+import validator from "validator";
+import { TextInput } from '../../components/textInput/index'
+import { FiMail, FiUser, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
+import { Typography, TextField } from "@mui/material";
+import PasswordStrengthIndicator from "react-password-strength-bar";
 import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import { FiEye, FiEyeOff, FiLock, FiMail, FiUser } from "react-icons/fi";
-import PasswordStrengthIndicator from "react-password-strength-bar";
-import { useLocation, useNavigate } from 'react-router-dom';
-import validator from "validator";
-import { Button } from '../../components/button/index';
-import { TextInput } from '../../components/textInput/index';
-import { getAccessToken, post } from '../../utils/API/index';
-import { storeLS } from '../../utils/LocalStorage/index';
-import "./index.css";
+import { FiInfo } from "react-icons/fi";
 const passwordValidator = require('password-validator')
 
 
@@ -96,14 +99,17 @@ const Register = (props) => {
     e?.preventDefault()
 
     const payload = {
-      username,
-      email,
+      login,
       password,
     }
 
     setIsLoading(true)
 
-    const response = await post('/api/auth/register', payload)
+    const response = await post('auth/signin', payload)
+    if (response.status === 'error') {
+      toast.error(response.message)
+      setIsLoading(false)
+    }
 
     if (response.status === 201) {
       console.log(response);

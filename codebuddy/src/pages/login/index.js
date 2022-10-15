@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { FiEye, FiEyeOff, FiLock, FiUser } from 'react-icons/fi';
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from '../../components/button/index';
-import { TextInput } from '../../components/textInput/index';
-import { getAccessToken, post } from "../../utils/API/index";
-import { storeLS } from "../../utils/LocalStorage/index";
+import toast from "react-hot-toast";
+import {post} from "../../utils/API/index"
+import {storeLS} from "../../utils/LocalStorage/index"
+import {getAccessToken} from "../../utils/API/index"
+import { Button } from '../../components/button/index'
+import { TextInput } from '../../components/textInput/index'
+import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
 
 const Login = () => {
 
@@ -34,10 +36,23 @@ const Login = () => {
 		};
 	
 		setIsLoading(true);
-		const response = await post("/api/auth/login", payload);
-		storeLS("jwt_token", response.token);
-		navigate("/dashboard");
-		setIsLoading(false);
+	
+		const response = await post("auth/signin", payload);
+		if (response.status === "error") {
+		  toast.error(response.message);
+		  setIsLoading(false);
+		}
+	
+		if (response.status === "OK") {
+		  storeLS("jwt_token", response.message.accessToken);
+		  if (response.message.is_onboarding_complete === 'false' || response.message.is_onboarding_complete === false) {
+			if (response.message.is_employer) {
+			  navigate("/onboarding/recruiter/profile");
+			} else {
+			  navigate("/onboarding/candidate/profile");
+			}
+		  } else navigate("/");
+		}
 	}
 
 	useEffect(() => {
