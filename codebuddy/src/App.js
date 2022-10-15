@@ -11,6 +11,7 @@ import RegisterProfile from './pages/register/profile/index'
 import RegisterSkills from './pages/register/skills/index'
 import Profile from './pages/profile/index'
 import Project from './pages/project/index'
+import ProjectIndividual from './pages/project/individual/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -86,6 +87,15 @@ function App() {
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
                     <Profile viewState="view" />{' '}
+                  </Protected>
+                }
+              />
+              <Route
+                path="project/:id"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    {' '}
+                    <ProjectIndividual viewState="view" />{' '}
                   </Protected>
                 }
               />
