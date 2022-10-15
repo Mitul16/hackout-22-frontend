@@ -34,14 +34,9 @@ const Login = () => {
 		};
 	
 		setIsLoading(true);
-	
 		const response = await post("/api/auth/login", payload);
-	
-		if (response.status === 200) {
-		  storeLS("jwt_token", response.message.accessToken);
-		  // TODO: Add redirection to dashboard
-		}
-
+		storeLS("jwt_token", response.token);
+		navigate("/dashboard");
 		setIsLoading(false);
 	}
 
