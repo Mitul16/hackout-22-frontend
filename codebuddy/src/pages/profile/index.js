@@ -30,3 +30,4 @@ const Profile = ({dashboard}) => {
 };
 
 export default Profile;
+

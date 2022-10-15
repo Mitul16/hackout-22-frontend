@@ -12,17 +12,18 @@ import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
 
+import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(true)
-  const [isEmployer, setIsEmployer] = useState(false)
-  const [employerId, setEmployerId] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   useEffect(() => {
-    setIsEmployer(localStorage.getItem('isEmployer') === 'true' ? true : false)
-    setEmployerId(localStorage.getItem('employerId'))
-  }, [isEmployer, employerId, isLoggedIn])
+    const jwt_token = getAccessToken();
+    if (!!jwt_token) setIsLoggedIn(jwt_token);
+  }, [isLoggedIn])
+
+
 
   return (
     <>
@@ -30,9 +31,7 @@ function App() {
       <Router>
         {isLoggedIn ? (
           <NavBar
-            loginStatus={setisLoggedIn}
-            isEmployer={isEmployer}
-            employerId={employerId}
+            loginStatus={setIsLoggedIn}
           />
         ) : (
           ''
@@ -55,9 +54,7 @@ function App() {
             path="login"
             element={
               <Login
-                loginStatus={setisLoggedIn}
-                setIsEmployer={setIsEmployer}
-                setEmployerId={setEmployerId}
+                loginStatus={setIsLoggedIn}
               />
             }
           />
