@@ -1,10 +1,5 @@
 @import "./antd.css";
 @import "./antd-mod.css";
-/* @import "./react-calendar-heatmap.css"; */
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html {
   --green-100: #00ae16;
@@ -23,6 +18,7 @@ html {
   --dark-100: #2c2e33;
   --dark-200: #1a1b1e;
   --dark-300: #141517;
+  --dark-400: #A6A7AB;
   --dark-navbar: #141517c9;
   --white: #ffffff;
   --black:#141517;;
