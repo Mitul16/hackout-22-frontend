@@ -16,7 +16,7 @@ import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     const jwt_token = getAccessToken();

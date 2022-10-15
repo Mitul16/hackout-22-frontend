@@ -1,0 +1,77 @@
+.Loading-Box {
+  /* background-color: #ffffff; */
+  height: 89.2vh;
+  position: relative;
+  overflow: hidden;
+  /* z-index: 2; */
+}
+.loader {
+  margin: 0 auto;
+  width: 120px;
+  height: 10vh;
+  text-align: center;
+  font-size: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-120%) translateX(-50%);
+}
+.bar1{
+    background-color: #0BB3FF ;
+    animation: delay 0.8s infinite ease-in-out;
+}
+.bar2{
+    background-color: #18A3FF;
+    animation: delay 0.8s infinite ease-in-out;
+    animation-delay: -0.7s;
+}
+.bar3{
+    background-color: #2396FF;
+    animation: delay 0.8s infinite ease-in-out;
+    animation-delay: -0.6s;
+}
+.bar4{
+    background-color: #3185FF;
+    animation: delay 0.8s infinite ease-in-out;
+    animation-delay: -0.5s;
+}
+.bar5{
+    background-color: #4271FF;
+    animation: delay 0.8s infinite ease-in-out;
+    animation-delay: -0.4s;
+}
+.bar6{
+    background-color: #4D63FF;
+    animation: delay 0.8s infinite ease-in-out;
+    animation-delay: -0.3s;
+}
+.loader> div {
+    height: 100%;
+    width: 12%;
+    display: inline-block;
+    margin-left: 2px;
+}
+.Loader-Text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(40%) translateX(-50%);
+  margin: 0 auto;
+  text-align: center;
+  color: #5C5C5C;
+}
+
+@-webkit-keyframes delay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.05) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes delay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.05);
+    -webkit-transform: scaleY(0.05);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
