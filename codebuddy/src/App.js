@@ -39,14 +39,14 @@ function App() {
         <div className="relative w-full">
           <div className="flex-1">
             <Routes>
-                <Route
+              <Route
                   path="dashboard"
                   element={
                     // <Protected isLoggedIn={isLoggedIn}>
                       <Dashboard />
                     // </Protected>
                   }
-                />
+              />
               <Route
                 path="login"
                 element={
