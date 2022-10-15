@@ -1,6 +1,6 @@
 import { NavLinks, NavLink } from "../NavLinks/index";
 import { LogoutModal  } from "../LogoutModal/index";
-import { FiSettings, FiLogOut } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
 // import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
