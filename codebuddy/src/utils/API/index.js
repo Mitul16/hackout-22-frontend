@@ -30,7 +30,7 @@ const post = async (endpoint, body, token = null) => {
       body,
       getHeaders(token)
     );
-    return response.data;
+    return response;
   } catch (err) {
     console.error(err?.response?.data || err);
     return err?.response?.data || err;

@@ -18,13 +18,13 @@ import { Toaster } from 'react-hot-toast'
 import "./styles/globals.css";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     const jwt_token = getAccessToken();
+    console.log(jwt_token)
     if (!!jwt_token) setIsLoggedIn(jwt_token);
   }, [isLoggedIn])
-
   return (
     <div className="w-full flex">
       <Toaster />
@@ -40,7 +40,7 @@ function App() {
           <div className="flex-1">
             <Routes>
                 <Route
-                  path="dashboard"
+                  path="/"
                   element={
                     <Protected isLoggedIn={isLoggedIn}>
                       <Dashboard />

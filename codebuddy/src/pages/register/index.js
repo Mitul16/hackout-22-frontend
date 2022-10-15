@@ -106,19 +106,22 @@ const Register = (props) => {
     const response = await post('/api/auth/register', payload)
 
     if (response.status === 201) {
-      storeLS('jwt_token', response.message.accessToken)
-      if (
-        response.message.is_onboarding_complete === 'false' ||
-        response.message.is_onboarding_complete === false
-      ) {
-        if (response.message.is_employer) {
-          navigate('/onboarding/recruiter/profile')
-        } else {
-          navigate('/onboarding/candidate/profile')
-        }
-      } else navigate('/')
+      console.log(response);
+      storeLS('jwt_token', response.data.token)
+      navigate("/")
+      // if (
+      //   response.message.is_onboarding_complete === 'false' ||
+      //   response.message.is_onboarding_complete === false
+      // ) {
+      //   if (response.message.is_employer) {
+      //     navigate('/onboarding/recruiter/profile')
+      //   } else {
+      //     navigate('/onboarding/candidate/profile')
+      //   }
+      // } else navigate('/')
     } else {
-      toast.error(response.message)
+      console.log(response)
+      toast.error(response.error)
       setIsLoading(false)
     }
   }
