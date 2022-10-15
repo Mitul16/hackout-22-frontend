@@ -15,7 +15,7 @@ export const ProjectCardSmall = ({
           <div className="w-full flex gap-1 mt-3">
           {
             projectData.tags?.length > 0 
-            ? projectData.tags.map((tag,i) => <SkillTag variant={'xs'} tagValue={tag} key={i}/>)
+            ? projectData.tags.map((tag,i) => <SkillTag variant={'sm'} tagValue={tag} key={i}/>)
             : ''
           }
           </div>
