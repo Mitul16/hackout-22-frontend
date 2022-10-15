@@ -10,7 +10,7 @@ import validator from "validator";
 import { TextInput } from '../../components/textInput/index'
 import { FiMail, FiUser, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import { Typography, TextField } from "@mui/material";
-import PasswordStrengthBar from "react-password-strength-bar";
+import PasswordStrengthIndicator from "react-password-strength-bar";
 import { styled } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import { FiInfo } from "react-icons/fi";
@@ -50,7 +50,7 @@ const Register = (props) => {
   const [showPassword, setShowPassword] = useState(false)
   const [isFormValid , setIsFormValid] = useState(false)
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
   const [isUserEmpty, setIsUserEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
@@ -95,7 +95,7 @@ const Register = (props) => {
     setIsPasswordValid(isValid);
     setIsFormValid(isEmailValid && isValid && !isUserEmpty);
   };
-  async function onSubmit(e) {
+  async function handleSubmit(e) {
     e?.preventDefault()
 
     const payload = {
@@ -132,192 +132,104 @@ const Register = (props) => {
     } else if (isLoggedIn) navigate('/')
   }, [isLoggedIn, setIsLoggedIn, navigate])
   return (
-    <>
-      <div className="register-page">
-        <div className="main-form">
-          <div className="logo"></div>{" "}
-          <div className="center acc-Form">
-            <Typography
-              className="form-title"
-              sx={{
-                fontSize: 30,
-                fontFamily: "Montserrat,sans-serif",
-                fontWeight: "bold",
-              }}
-              color="#FFFFFF"
-              gutterBottom
-            >
-              Create an Account!
-            </Typography>{" "}
-          </div>{" "}
-          {/* <div className="center register-btn-container column">
-						<button class="twitter-register-btn align-center center"> Sign up Twitter </button>{" "}
-						<button class="google-register-btn align-center center"> Sign up Google </button>{" "}
-					</div>{" "} */}
-          {/* <div className="center line-text-div">
-						<p className="line-text">
-							<span> use your email </span>{" "}
-						</p>{" "}
-					</div>{" "} */}
-          <div className="center">
-            <form className="form-container">
-              {" "}
-              {/* <TextField
-                                                                    className={classes.formInputs}
-                                                                    id="emailAddress"
-                                                                    InputProps={{
-                                                                        endAdornment: (
-                                                                            <InputAdornment position="end">
-                                                                                <Email />
-                                                                            </InputAdornment>
-                                                                        ),
-                                                                    }}
-                                                                    label="Email Address"
-                                                                /> */}{" "}
-              {/* <input
-								onChange={onChangeUsername}
-								className="form-input icon-user"
-								placeholder="Username"
-								name="username"
-								value={username}
-								required
-								></input>{" "} */}
-              <TextField
-                variant="outlined"
-                onChange={onChangeUsername}
-                // className="form-input icon-user"
-                placeholder="Username"
-                label="Username"
-                name="username"
-                value={username}
-                required
-                sx={{ marginBottom: "8px", marginTop: "24px", width: "120%" }}
-              />
-              <div className="msg">
-                {" "}
-                {isUserEmpty ? "User name required" : ""}{" "}
-              </div>{" "}
-              {/* <input
-								onChange={onChangeEmail}
-								className="form-input icon-mail"
-								placeholder="Email"
-								value={email}
-								required
-							></input>{" "} */}
-              <TextField
-                variant="outlined"
-                onChange={onChangeEmail}
-                // className="form-input icon-mail"
-                placeholder="Email"
-                label="Email"
-                value={email}
-                required
-                sx={{ marginBottom: "8px", width: "120%", marginTop: "16px" }}
-              />
-              <div className="msg">
-                {" "}
-                {isEmailEmpty
-                  ? "Email required"
-                  : isEmailValid
-                  ? ""
-                  : "Email Invalid"}{" "}
-              </div>{" "}
-              {/* <input
-								type="password"
-								name="password"
-								onChange={onChangePassword}
-								className="form-input icon-password"
-								placeholder="Password"
-								value={password}
-								required
-							></input>{" "} */}
-              <TextField
-                variant="outlined"
-                type="password"
-                name="password"
-                onChange={onChangePassword}
-                // className="form-input icon-password"
-                placeholder="Password"
-                label="Password"
-                value={password}
-                required
-                sx={{ marginBottom: "8px", width: "120%", marginTop: "16px" }}
-              />
-              <div className="msg">
-                {" "}
-                {isPasswordEmpty ? (
-                  "Password required"
-                ) : password.length === 0 ? (
-                  ""
-                ) : !isPasswordValid ? (
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    Password Invalid
-                    {/* <ul>
-										{
-											invalidMsgs.map((msg)=><li>{msg.message}</li>)
-										}
-										</ul> */}
-                    <StyledTooltip
-                      title={invalidMsgs}
-                      placement="right-start"
-                      sx={{ whiteSpace: "pre-line" }}
-                    >
-                      <div
-                        style={{
-                          display: "grid",
-                          placeItems: "center",
-                          marginLeft: "8px",
-                        }}
-                      >
-                        <FiInfo />
-                      </div>
-                    </StyledTooltip>
-                  </div>
+    <div className="flex flex-col h-screen px-8 md:flex-row px-0">
+      <div className="absolute top-12 right-0 left-1 md:ml-12 w-fit">
+      </div>
+      <div className=" w-full px-4 py-40 md:w-auth-form flex items-center justify-center flex-col max-w-prose mx-auto gap-12">
+        <h1 className="text-5xl font-bold dark:text-white">Sign In</h1>
+
+        <form
+          className="w-full flex gap-4 flex-col"
+          onSubmit={handleSubmit}
+          method="post"
+          action="/form"
+          autoComplete="off"
+        >
+          <div className="w-full h-fit">
+            <TextInput
+              type="text"
+              placeholder="Username"
+              prefix={
+                <FiUser className="text-xl dark:text-white text-dark-300" />
+              }
+              required={true}
+              rounded={true}
+              value={username}
+              onChange={setUsername}
+              autoFill={false}
+            />
+          </div>
+          <div className="w-full h-fit">
+            <TextInput
+              type="email"
+              placeholder="Email Address"
+              prefix={
+                <FiMail className="text-xl dark:text-white text-dark-300" />
+              }
+              required={true}
+              rounded={true}
+              value={email}
+              onChange={setEmail}
+              autoFill={false}
+            />
+          </div>
+          <div className="w-full h-fit">
+            <TextInput
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              prefix={
+                <FiLock className="text-xl dark:text-white text-dark-300" />
+              }
+              suffix={
+                showPassword ? (
+                  <FiEye
+                    className="text-xl dark:text-white text-dark-300 cursor-pointer"
+                    onClick={() => setShowPassword(false)}
+                  />
                 ) : (
-                  <div>
-                    <span style={{ color: "#5C5C5C" }}>Password Strength:</span>{" "}
-                    <br />
-                    <PasswordStrengthBar
-                      className="strength-bar"
-                      password={password}
-                    />
-                  </div>
-                )}{" "}
-              </div>{" "}
-              <div className="form-button">
-                <Button
-                  isDisabled={!isFormValid}
-                  isLoading={isLoading}
-                  handleClick={onSubmit}
-                  content={"Register"}
-                />
-              </div>
-            </form>{" "}
-          </div>{" "}
-          {/* {
-                                        props.message && <Snackbar open={succesMsg} autoHideDuration={6000} onClose={handleCloseMessage}>
-                                          <Alert onClose={handleCloseMessage} severity="success">
-                                            {props.messsge}
-                                          </Alert>
-                                        </Snackbar>
-                                      } */}{" "}
-        </div>{" "}
-        <div className="side-banner-right align-center center column">
-          <h2> Welcome! </h2>{" "}
-          <p>
-            {" "}
-            BUIDL your On-chain Resume and get access to web3 opportunities from
-            all over the world.{" "}
-          </p>{" "}
-          <div className="signup-prompt">
-            <p> Already part of the Social3 Club ? Login instead </p>{" "}
-            <Button onClick={() => navigate("../login")}> LOGIN! </Button>{" "}
-          </div>{" "}
-          {/* <img src="../../../assets/images/sideBanner.jpg" alt="side-banner" /> */}{" "}
-        </div>{" "}
-      </div>{" "}
-    </>
+                  <FiEyeOff
+                    className="text-xl dark:text-white text-dark-300 cursor-pointer"
+                    onClick={() => setShowPassword(true)}
+                  />
+                )
+              }
+              required={true}
+              rounded={true}
+              value={password}
+              onChange={setPassword}
+              autoFill={false}
+            />
+          </div>
+          <PasswordStrengthIndicator password={password} />
+          <Button type="submit" rounded={true} isLoading={isLoading}>
+            Sign Up
+          </Button>
+        </form>
+        {/* <div className="relative w-full flex justify-center items-center">
+          <div className="absolute inset-0 m-auto h-divider w-full bg-light-300 z-0"></div>
+          <span className="mx-auto relative text-light-300 z-10 px-2 bg-white dark:bg-dark-300 text-sm">
+            Or Sign Up In
+          </span>
+        </div>
+        <div className="gap-8 grid grid-cols-2 w-full">
+          <TwitterLogin />
+          <GoogleLogin />
+        </div> */}
+        <div className="relative w-full flex justify-center items-center">
+          <div className="absolute inset-0 m-auto h-divider w-full bg-light-300 z-0"></div>
+          <span className="mx-auto relative text-light-300 z-10 px-2 bg-white dark:bg-dark-300 text-sm">
+            or Sign In anonymously with
+          </span>
+        </div>
+        <div className="gap-8 w-full w-64">
+          {/* <TwitterLogin />
+          <GoogleLogin /> */}
+        </div>
+      </div>
+   
+    </div>
   );
+
 }
 
 export default Register
