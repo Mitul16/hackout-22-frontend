@@ -23,9 +23,14 @@ const Profile = ({dashboard}) => {
   //  if (!user || isLoading) return <Loader/>;
 
   return (
-    <div className={`w-full px-6 md:px-0 md:py-8 flex flex-col gap-10`}>
-      
-    </div>
+    <section className="flex gap-6 flex-row px-8 py-12">
+      <div className="w-full">
+        <h2 className="hidden md:block text-5xl font-bold text-dark-300 dark:text-white">
+          Profile
+        </h2>
+      </div>
+      <div className="hidden md:flex w-1/2"></div>
+    </section>
   );
 };
 
