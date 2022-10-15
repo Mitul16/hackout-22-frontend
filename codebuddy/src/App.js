@@ -7,12 +7,13 @@ import SideNav from './interface/SideNav/index'
 import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
+import RegisterProfile from './pages/register/profile/index'
+import RegisterSkills from './pages/register/skills/index'
 import Profile from './pages/profile/index'
 import Project from './pages/project/index'
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
-import Project from "./pages/project/index"
 
 import {getAccessToken} from './utils/API/index'
 import { Toaster } from 'react-hot-toast'
@@ -58,6 +59,8 @@ function App() {
                 }
               />
               <Route path="register" element={ <Register />} />
+              <Route path="register/profile" element={ <RegisterProfile />} />
+              <Route path="register/skills" element={ <RegisterSkills />} />
               <Route path="forget-password" element={<ForgetPassword />} />
               <Route
                 path="profile"
