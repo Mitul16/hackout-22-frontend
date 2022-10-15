@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { FiEye, FiEyeOff, FiLock, FiUser } from 'react-icons/fi';
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import {post} from "../../utils/API/index"
-import {storeLS} from "../../utils/LocalStorage/index"
-import {getAccessToken} from "../../utils/API/index"
-import { Button } from '../../components/button/index'
-import { TextInput } from '../../components/textInput/index'
-import { FiUser, FiLock, FiEye, FiEyeOff } from 'react-icons/fi'
+import { Button } from '../../components/button/index';
+import { TextInput } from '../../components/textInput/index';
+import { getAccessToken, post } from "../../utils/API/index";
+import { storeLS } from "../../utils/LocalStorage/index";
 
 const Login = () => {
 
@@ -37,22 +35,15 @@ const Login = () => {
 	
 		setIsLoading(true);
 	
-		const response = await post("auth/login", payload);
-		if (response.status === "error") {
-		  toast.error(response.message);
-		  setIsLoading(false);
+		const response = await post("/api/auth/login", payload);
+		console.log(response);
+		
+		if (response.status === 200) {
+		  storeLS("jwt_token", response.data.token);
+		  navigate("../")
 		}
-	
-		if (response.status === "OK") {
-		  storeLS("jwt_token", response.message.accessToken);
-		  if (response.message.is_onboarding_complete === 'false' || response.message.is_onboarding_complete === false) {
-			if (response.message.is_employer) {
-			  navigate("/onboarding/recruiter/profile");
-			} else {
-			  navigate("/onboarding/candidate/profile");
-			}
-		  } else navigate("/");
-		}
+
+		setIsLoading(false);
 	}
 
 	useEffect(() => {
@@ -60,11 +51,7 @@ const Login = () => {
 		  setIsLoggedIn(null);
 		} else if (isLoggedIn) navigate("/");
 	  }, [isLoggedIn, setIsLoggedIn, navigate]);
-	
-	const onConnect = () => {
-		navigate("/feed");
-	};
-	
+		
 
 	return (
 	<div className="flex flex-col h-screen px-8 md:flex-row px-0">

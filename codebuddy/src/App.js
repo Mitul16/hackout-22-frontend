@@ -8,7 +8,10 @@ import Dashboard from './pages/dashboard/index'
 import Login from './pages/login/index'
 import Register from './pages/register/index'
 import Profile from './pages/profile/index'
+<<<<<<< HEAD
 import Project from './pages/project/index'
+=======
+>>>>>>> 0ec594734949502b9966040ef579071dc5d3ddfc
 import ForgetPassword from './pages/forgot-password/index'
 import ErrorPage from './pages/error/index'
 import NoMatch from './pages/404/index'
@@ -19,7 +22,12 @@ import { Toaster } from 'react-hot-toast'
 import "./styles/globals.css";
 
 function App() {
+<<<<<<< HEAD
   const [isLoggedIn, setIsLoggedIn] = useState(true)
+=======
+
+  const [isLoggedIn, setIsLoggedIn] = useState(!!getAccessToken())
+>>>>>>> 0ec594734949502b9966040ef579071dc5d3ddfc
 
   useEffect(() => {
     const jwt_token = getAccessToken();
@@ -32,7 +40,7 @@ function App() {
       <Router>
         {isLoggedIn ? (
           <SideNav
-            loginStatus={setIsLoggedIn}
+            isLoggedIn={isLoggedIn}
           />
         ) : (
           ''
@@ -41,12 +49,12 @@ function App() {
           <div className="flex-1">
             <Routes>
               <Route
-                  path="dashboard"
-                  element={
-                    // <Protected isLoggedIn={isLoggedIn}>
-                      <Dashboard />
-                    // </Protected>
-                  }
+                path="/"
+                element={
+                  <Protected isLoggedIn={isLoggedIn}>
+                    <Dashboard />
+                  </Protected>
+                }
               />
               <Route
                 path="login"
@@ -68,6 +76,7 @@ function App() {
                 }
               />
               <Route
+<<<<<<< HEAD
                 path="project"
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
@@ -77,14 +86,16 @@ function App() {
                 }
               />
               {/* <Route
+=======
+>>>>>>> 0ec594734949502b9966040ef579071dc5d3ddfc
                 path="project"
                 element={
                   <Protected isLoggedIn={isLoggedIn}>
                     {' '}
-                    <Project viewState="user" />{' '}
+                    <Profile viewState="user" />{' '}
                   </Protected>
                 }
-              /> */}
+              />
               <Route
                 path="profile/:id"
                 element={
