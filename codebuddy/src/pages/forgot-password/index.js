@@ -27,7 +27,6 @@ const ForgetPassword = () => {
       const data = await post('auth/forgetpassword',payload);
       setLoading(false);
       setEmailSent(true);
-      toast.success("Email sent!");
     } catch (e) {
       console.log(e);
       setErrorMessage(e.response.data.message);

@@ -50,7 +50,7 @@ export const NavLinkBtn = ({
                     : " text-dark-300 dark:text-light-200 flex-col md:flex-row"
                 } hover:bg-light-100 dark:hover:bg-dark-100`
           } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-          onClick={ () => setVisible(true)}
+          onClick={ setVisible }
         >
           <span className="text-2xl md:text-xl">{icon}</span>
           <span>{title}</span>
@@ -117,7 +117,7 @@ export const NavLink = ({
 
 export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
   const location = useLocation();
-
+  const navigate = useNavigate();
   return (
     <div className="h-full md:h-fit md:my-6 flex md:gap-4 flex-row md:flex-col">
       { isLoggedIn &&(
@@ -139,13 +139,14 @@ export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
               standAlone={true}
               isSelected={false}
               visible={projectModVis}
-              setVisible={setProjectModVis}
+              setVisible={() => setProjectModVis(true) }
             />
             <p className="items-center align-center text-[#A6A7AB] my-2 mx-0">or</p>
             <NavLinkBtn
               icon={<FiUserPlus />}
               title={"Join a Project"}
               standAlone={true}
+              setVisible={()=>{navigate("/projects")}}
               isSelected={false}
             />
           </div>

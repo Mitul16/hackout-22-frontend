@@ -31,7 +31,6 @@ const Project = () => {
     console.log(response.data);
     if(response.data.status ==="OK"){
          setProjects(response.data.data);
-         toast.success("Dashboard details fetched Successfully!");
          return;
     }else{
         toast.error(response.error);
@@ -62,10 +61,12 @@ const Project = () => {
             />
           </div>
           <div>
-            <Button type="submit" onClick={handleSearchSubmit}>Search</Button>
+            <Button type="submit" onClick={handleSearchSubmit}>
+              Search
+            </Button>
           </div>
         </div>
-        <div className=" grid grid-cols-2  gap-4 md:gap-4 mt-4">
+        <div className="grid grid-cols-2 grid-flow-row gap-4 md:gap-4 mt-4">
           {projects?.length > 0
             ? projects.map((project, i) => (
                 <ProjectCardWide variant="wide" projectData={project} key={i} />

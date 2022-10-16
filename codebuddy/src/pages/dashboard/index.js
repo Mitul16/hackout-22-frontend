@@ -18,8 +18,10 @@ const Dashboard = ()=>{
 		setRecommendedProjects(data.data.data);
 		console.log(recommendedProjects);
     setChange("change");
-		toast.success("Dashboard details fetched Successfully!");
 	};
+  const getTasks = async e =>{
+    const data = await get("/task/list/user")
+  }
 	useEffect(() => {
 		getDashboardData();
 	}, [change]);
@@ -36,6 +38,19 @@ const Dashboard = ()=>{
               dashboardData.projects
                 ? dashboardData.tasks
                 : [
+                    {
+                      title: "title",
+                      description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+                      tags: ["NodeJS", "CSS"],
+                      completeionAmt: 0.65,
+                    },
+                    {
+                      title: "Hackout",
+                      description:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                      tags: ["NodeJS", "CSS", "React.JS", "Flutter"],
+                    },
                     {
                       title: "title",
                       description:

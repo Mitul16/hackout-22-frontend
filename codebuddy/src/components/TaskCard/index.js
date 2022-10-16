@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { TaskModal } from '../../interface/TaskModal/index'
+import { TaskModal } from '../../interface/taskModal'
 
 export const TaskCardWide = ({
     taskData = {},
