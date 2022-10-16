@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {get} from "../../../utils/API/index";
+// import {get} from "../../../utils/API/index";
 import toast from "react-hot-toast";
 import {useLocation,useNavigate} from "react-router-dom";
 
-import {RecommendedProjects} from '../../../interface/RecommendedProjects/index'
-import {PastProjects} from '../../../interface/PastProjects/index'
+import {TechStackList} from '../../../interface/TechStackList/index'
+import {ListCollabs} from '../../../interface/ListCollabs/index'
 import {TaskColumn} from '../../../interface/TasksColumn/index'
 
 const ProjectIndividual = () =>{
