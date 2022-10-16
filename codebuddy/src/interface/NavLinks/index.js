@@ -36,24 +36,25 @@ export const NavLinkBtn = ({
   title,
   onClick = () => {},
   standAlone = false,
+  visible = false,
+  setVisible = () => {},
 }) => {
   return (
     <>
       {(
-        <a
-          href={"/"}
-          className={`block ${
+        <div
+          className={`block cursor-pointer ${
                ` ${
                   standAlone
                     ? " text-dark-300 dark:text-light-300 bg-[#202020] flex-row"
                     : " text-dark-300 dark:text-light-200 flex-col md:flex-row"
                 } hover:bg-light-100 dark:hover:bg-dark-100`
           } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-          onClick={onClick}
+          onClick={ () => setVisible(true)}
         >
           <span className="text-2xl md:text-xl">{icon}</span>
           <span>{title}</span>
-        </a>
+        </div>
       )}
     </>
   );
@@ -65,6 +66,7 @@ export const NavLink = ({
   title,
   isSelected,
   standAlone = false,
+  onClick=()=>{}
 }) => {
   const navigate = useNavigate();
   return (
@@ -78,12 +80,12 @@ export const NavLink = ({
                 ? "bg-lightblue-200 text-blue-100 dark:text-white dark:bg-dark-100 border-t md:border-t-0"
                 : ` ${
                     standAlone
-                      ? " text-dark-300 dark:text-white "
-                      : " text-dark-300 dark:text-light-300 "
-                  } hover:bg-light-100 dark:hover:bg-dark-300`
+                      ? "text-white "
+                      : "text-light-300 "
+                  } hover:bg-dark-300`
             } ${
               standAlone ? "" : "flex-col md:flex-row"
-            } md:rounded-lg flex items-center gap-2 md:gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
+            } md:rounded-lg flex items-center gap-2 md:gap-4 p-4 text-md font-semibold h-fill border-light-300 flex-1 md:flex-none`}
             onClick={()=>{
               navigate(href)
             }}
@@ -93,31 +95,27 @@ export const NavLink = ({
           </a>
         </Link>
       ) : (
-        <a
-          href={"/"}
-          className={`block ${
+        <div
+          className={`block cursor-pointer ${
             isSelected
-              ? "bg-lightblue-200 text-blue-100 dark:text-white dark:bg-dark-100 border-t md:border-t-0"
+              ? "text-white bg-dark-100 border-t md:border-t-0"
               : ` ${
                   standAlone
-                    ? " text-dark-300 dark:text-white flex-row"
-                    : " text-dark-300 dark:text-light-300 flex-col md:flex-row"
-                } hover:bg-light-100 dark:hover:bg-dark-300`
-          } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-          onClick={()=>{
-            console.log("GGGg");
-            navigate(href)
-          }}
+                    ? " text-white flex-row"
+                    : " text-light-300 flex-col md:flex-row"
+                } hover:bg-dark-300`
+          } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-light-300 flex-1 md:flex-none`}
+          onClick={onClick}
         >
           <span className="text-2xl md:text-xl">{icon}</span>
           <span>{title}</span>
-        </a>
+        </div>
       )}
     </>
   );
 }
 
-export const NavLinks = ({ isLoggedIn }) => {
+export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
   const location = useLocation();
 
   return (
@@ -140,6 +138,8 @@ export const NavLinks = ({ isLoggedIn }) => {
               title={"Add New Project"}
               standAlone={true}
               isSelected={false}
+              visible={projectModVis}
+              setVisible={setProjectModVis}
             />
             <p className="items-center align-center text-[#A6A7AB] my-2 mx-0">or</p>
             <NavLinkBtn

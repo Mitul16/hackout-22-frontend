@@ -1,8 +1,21 @@
+import {useState} from "react";
+import { TaskModal } from '../../interface/TaskModal/index'
+
 export const TaskCardWide = ({
     taskData = {},
+    visible=false,
+    setVisible = () => {}
 }) => {
+  
+    const [showTaskModal, setShowTaskModal] = useState(false);
 
     return (
+      <>
+        <TaskModal
+              visible={showTaskModal}
+              setVisible={setShowTaskModal}
+        />
+        <div onClick={()=> {setShowTaskModal(true)}} className="cursor-pointer">
           <div className="w-fullmt-1 bg-dark-200 px-4 py-2 rounded-lg border border-[#30363D] m-3">
             <div className="w-full flex text-lg dark:text-white font-bold pt-2">
               <p className="pr-1">
@@ -24,6 +37,8 @@ export const TaskCardWide = ({
             } */}
             </div>
           </div>
+        </div>
+      </>
     );
 }
 
