@@ -101,7 +101,7 @@ const Profile = ({dashboard}) => {
       </div>
       <div className="md:flex w-full flex-col">
         <div className="md:flex w-full flex-row gap-8">
-        <div className="hidden md:block text-2xl font-bold text-dark-300 dark:text-white self-center">
+        <div className="text-2xl font-bold text-dark-300 dark:text-white self-center">
           Projects
         </div>
         <div className="flex-row h-full md:h-fit flex md:gap-4 flex-row md:flex-row">

@@ -30,7 +30,7 @@ const Dashboard = ()=>{
         <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
           Tasks
         </h3>
-        <div className="flex-col">
+        <div className="flex-col px-2 py-2 mt-4">
           <TaskColumn
             tasksList={
               dashboardData.projects
