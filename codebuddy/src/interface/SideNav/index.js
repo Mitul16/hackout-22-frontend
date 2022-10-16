@@ -33,8 +33,8 @@ const SideNav = ({isLoggedIn }) => {
         <div className="transition absolute h-full w-screen top-0 right-0 bg-dark-200"></div>
         <div className="relative w-full">
           <div className="w-full flex items-center justify-center text-dark-400">
-          <h2 className="text-light-400 lg">
-            {`<CodeBuddy/>`}
+          <h2 className="text-light-400 text-lg text-bold">
+            {`< CodeBuddy />`}
           </h2>
           </div>
           <NavLinks isLoggedIn={isLoggedIn} projectModVis={showProjectModal} setProjectModVis={setShowProjectModal} />

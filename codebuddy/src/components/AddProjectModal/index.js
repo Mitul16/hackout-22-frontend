@@ -40,6 +40,13 @@ export const ProjectModal = ({
   // }
   // };
   //
+  const defaultForm = {
+    title: "",
+    description: "",
+    tags: [],
+    OpenforMentors: false,
+    OpenforDevelopers: false,
+  } 
 
   const handleChange = (content, parameter) => {
     setProjectDetails((prevData) => {
