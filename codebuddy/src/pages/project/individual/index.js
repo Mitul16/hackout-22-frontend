@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {get} from "../../utils/API/index";
+// import {get} from "../../../utils/API/index";
 import toast from "react-hot-toast";
 import {useLocation,useNavigate} from "react-router-dom";
 
-import {RecommendedProjects} from '../../interface/RecommendedProjects/index'
-import {PastProjects} from '../../interface/PastProjects/index'
-import {TaskColumn} from '../../interface/TasksColumn/index'
+import {TechStackList} from '../../../interface/TechStackList/index'
+import {ListCollabs} from '../../../interface/ListCollabs/index'
+import {TaskColumn} from '../../../interface/TasksColumn/index'
 
-const Dashboard = ()=>{
+const ProjectIndividual = () =>{
 	const navigate = useNavigate();
 	const { state } = useLocation();
 
-	const [dashboardData, setDashboardData] = useState({});
+	const [projectData, setProjectData] = useState({});
 	const [errorMessage, setErrorMessage] = useState("");
 	
 	const getDashboardData = async e => {
@@ -30,15 +30,50 @@ const Dashboard = ()=>{
         <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
           Project
         </h3>
-        <div className="flex-col">
-          
+        <div className="flex flex-col w-full">
+          <div className="flex flex-col w-5/6 mt-6">
+			<div className="text-2xl font-bold text-white">
+				Project Title
+			</div>
+			<div className="text-base text-[#A6A7AB] self-center mt-2">
+				{'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'}
+			</div>
+		  </div>
+          <div className="flex flex-col w-full mt-10">
+			<div className="text-2xl font-bold text-white">
+				Tasks
+			</div>
+			<TaskColumn
+				tasksList={
+				projectData.projects
+					? projectData.tasks
+					: [
+						{
+						title: "title",
+						description:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+						tags: ["NodeJS", "CSS"],
+						completeionAmt: 0.65,
+						},
+						{
+						title: "Hackout",
+						description:
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+						tags: ["NodeJS", "CSS", "React.JS", "Flutter"],
+						},
+					]
+				}
+			/>
+		  </div>
         </div>
       </div>
-      <div className="flex-col w-1/2 mt-12">
-        
-      </div>
+      <div className="flex flex-col w-1/2 mt-20 gap-12">
+        <TechStackList tagList={projectData.tags?projectData.tags : ["NodeJS", "CSS", "React.JS", "Flutter"]} />
+	    <ListCollabs title={'Mentors'} list={projectData.mentors? projectData.mentors : []} />
+	    <ListCollabs title={'Developers'} list={projectData.developers? projectData.developers : []} />
+	  </div>
     </div>
   );
 }
 
-export default Dashboard;
+export default ProjectIndividual;
