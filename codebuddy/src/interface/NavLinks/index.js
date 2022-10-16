@@ -7,6 +7,7 @@ import {
   FiPlus,
   FiUserPlus,
 } from "react-icons/fi";
+import { RiLoader3Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -34,6 +35,7 @@ export const NavLinkBtn = ({
   href,
   icon,
   title,
+  isLoading=false,
   onClick = () => {},
   standAlone = false,
   visible = false,
@@ -49,11 +51,17 @@ export const NavLinkBtn = ({
                     ? " text-dark-300 dark:text-light-300 bg-[#202020] flex-row"
                     : " text-dark-300 dark:text-light-200 flex-col md:flex-row"
                 } hover:bg-light-100 dark:hover:bg-dark-100`
+                // `${
+                //   (isLoading) && "opacity-50 disabled:cursor-not-allowed"
+                // }`
           } md:rounded-lg flex items-center gap-4 p-4 text-md font-semibold h-fill border-blue-200 dark:border-light-300 flex-1 md:flex-none`}
-          onClick={ () => setVisible(true)}
+          onClick={ onClick }
         >
-          <span className="text-2xl md:text-xl">{icon}</span>
-          <span>{title}</span>
+          <div className="flex justify-center items-center gap-4 bg-inherit text-inherit">
+            {/* {isLoading && <RiLoader3Line className="animate-spin text-2xl" />} */}
+            <span className="text-2xl md:text-xl">{icon}</span>
+            <span>{title}</span>
+          </div>
         </div>
       )}
     </>
@@ -117,7 +125,8 @@ export const NavLink = ({
 
 export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
   const location = useLocation();
-
+  const navigate = useNavigate();
+  
   return (
     <div className="h-full md:h-fit md:my-6 flex md:gap-4 flex-row md:flex-col">
       { isLoggedIn &&(
@@ -147,6 +156,7 @@ export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
               title={"Join a Project"}
               standAlone={true}
               isSelected={false}
+              onClick={()=> navigate("/projects")}
             />
           </div>
         </>

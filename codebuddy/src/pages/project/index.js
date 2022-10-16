@@ -44,7 +44,7 @@ const Project = () => {
   return (
     <div className="flex gap-6 flex-row px-8 py-12 pr-24">
       <div className="w-full">
-        <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
+        <h3 className="text-2xl font-bold text-white">
           Projects
         </h3>
         <div className="flex-row flex w-full mt-6 gap-5">
@@ -65,6 +65,7 @@ const Project = () => {
             <Button type="submit" onClick={handleSearchSubmit}>Search</Button>
           </div>
         </div>
+        {/* <div className="columns-2 gap-4 [column-fill:_balance] box-border mx-auto before:box-inherit after:box-inherit mt-6 pt-2"> */}
         <div className=" grid grid-cols-2  gap-4 md:gap-4 mt-4">
           {projects?.length > 0
             ? projects.map((project, i) => (

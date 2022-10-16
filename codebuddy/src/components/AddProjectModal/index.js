@@ -1,29 +1,11 @@
 import { Modal, Checkbox } from "antd";
 import { useEffect, useState } from "react";
 import { FiCode, FiEdit, FiExternalLink, FiTrash } from "react-icons/fi";
-// import { TextInput, Button, RolesInput } from "../";
 import { TextInput } from "../textInput/index";
 import { Button } from "../button/index";
 import {RolesInput} from "../RolesInput/index";
-// import axios from "axios";
+import { post } from "../../utils/API/index";
 
-// import { log, post, remove } from "../../utils";
-
-// const post = async (endpoint, body, token = null) => {
-// try {
-// const response = await axios.post(
-// API_URL + endpoint,
-// body,
-// getHeaders(token)
-// );
-// log(response.data);
-// return response.data;
-// } catch (err) {
-// error(err?.response?.data || err);
-// return err?.response?.data || err;
-// }
-// };
-//
 export const ProjectModal = ({
   visible=false,
   setVisible,
@@ -41,6 +23,23 @@ export const ProjectModal = ({
   const [projectDetails, setProjectDetails] = useState(project),
     [loading, setLoading] = useState(false),
     [open, setOpen] = useState(false);
+
+
+  // const post = async (endpoint, body, token = null) => {
+  // try {
+  // const response = await axios.post(
+  // API_URL + endpoint,
+  // body,
+  // getHeaders(token)
+  // );
+  // log(response.data);
+  // return response.data;
+  // } catch (err) {
+  // error(err?.response?.data || err);
+  // return err?.response?.data || err;
+  // }
+  // };
+  //
 
   const handleChange = (content, parameter) => {
     setProjectDetails((prevData) => {

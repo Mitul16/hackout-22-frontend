@@ -21,6 +21,9 @@ module.exports = {
       gridTemplateColumns: {
         input: "auto 1fr auto",
       },
+      gridTemplateRows: {
+        masonry: "masonry",
+      },
       height: {
         hero: "calc(100vh - 8rem)",
         divider: "1px",
