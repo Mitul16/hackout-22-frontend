@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Radio } from "antd";
 // import {get} from "../../../utils/API/index";
 import toast from "react-hot-toast";
-import {useLocation,useNavigate} from "react-router-dom";
+import {useLocation,useNavigate, useParams} from "react-router-dom";
 
 import {TechStackList} from '../../../interface/TechStackList/index'
 import {ListCollabs} from '../../../interface/ListCollabs/index'
@@ -10,6 +10,7 @@ import {TaskColumn} from '../../../interface/TasksColumn/index'
 import {NavLinkBtn} from '../../../interface/NavLinks/index'
 import {ConfirmModal} from '../../../interface/confirmModal/index'
 import { FiUserPlus } from "react-icons/fi";
+import { post } from "../../../utils/API";
 
 
 const ModalForm = ({value,setValue}) => {
@@ -23,8 +24,8 @@ const ModalForm = ({value,setValue}) => {
 		<div className="pl-11">
 			<div className="text-white text-lg font-medium">Submit your Profile as?</div>
 			<Radio.Group onChange={onChange} value={value} className="flex text-[#A6A7AB] text-md">
-				<Radio value={'Mentor'}><p className="text-[#A6A7AB] text-base">Mentor</p></Radio>
-				<Radio value={'Developer'}><p className="text-[#A6A7AB] text-base">Developer</p></Radio>
+				<Radio value={'mentor'}><p className="text-[#A6A7AB] text-base">Mentor</p></Radio>
+				<Radio value={'developer'}><p className="text-[#A6A7AB] text-base">Developer</p></Radio>
 			</Radio.Group>
 		</div>
 	)
@@ -37,10 +38,17 @@ const ProjectIndividual = () =>{
 	const [projectData, setProjectData] = useState({});
 	const [errorMessage, setErrorMessage] = useState("");
 	const [showConfirmModal, setShowConfirmModal] = useState(false);
-	const [role, setRole] = useState('Mentor');
-	
-	const joinProject = () => {
-
+	const [role, setRole] = useState('mentor');
+	let {id} = useParams();
+	const joinProject =	async () => {
+		const payLoad = {
+      		role: role,
+     		 id: id,
+    	};
+		console.log(payLoad);
+		const response = await post("/project/apply" , payLoad);
+		console.log(response);
+		
 	}
 
 	const getDashboardData = async e => {
