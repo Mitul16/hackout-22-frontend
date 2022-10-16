@@ -14,7 +14,9 @@ import { storeLS } from '../../utils/LocalStorage/index';
 const passwordValidator = require('password-validator')
 
 
-const Register = (props) => {
+const Register = ({
+  loginStatus = () => {}
+}) => {
   const navigate = useNavigate()
   const { state } = useLocation()
 
@@ -109,6 +111,7 @@ const Register = (props) => {
     
     if (response.status === 201) {
       storeLS('jwt_token', response.data.token)
+      loginStatus(true)
       navigate("../")
     } else {
       toast.error(response.message)

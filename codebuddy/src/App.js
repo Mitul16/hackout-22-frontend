@@ -59,7 +59,7 @@ function App() {
                   />
                 }
               />
-              <Route path="register" element={ <Register />} />
+              <Route path="register" element={ <Register loginStatus={setIsLoggedIn} />} />
               <Route path="register/profile" element={ <RegisterProfile />} />
               <Route path="register/skills" element={ <RegisterSkills />} />
               <Route path="forget-password" element={<ForgetPassword />} />

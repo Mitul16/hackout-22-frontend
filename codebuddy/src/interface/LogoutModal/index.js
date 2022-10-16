@@ -8,7 +8,7 @@ export const LogoutModal = ({ visible, setVisible }) => {
 
   const onOk = () => {
     removeLS("jwt_token");
-    navigate("/signin");
+    navigate("/login");
     hideModal();
   };
 

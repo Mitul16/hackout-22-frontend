@@ -7,7 +7,9 @@ import { TextInput } from '../../components/textInput/index';
 import { getAccessToken, post } from "../../utils/API/index";
 import { storeLS } from "../../utils/LocalStorage/index";
 
-const Login = () => {
+const Login = ({
+	loginStatus= () => {}
+}) => {
 
 	const navigate = useNavigate();
 
@@ -37,10 +39,11 @@ const Login = () => {
 		setIsLoading(true);
 	
 		const response = await post("/auth/login", payload);
-		console.log(response);
+		// console.log(response);
 		
 		if (response.status === 200) {
 		  storeLS("jwt_token", response.data.token);
+		  loginStatus(true)
 		  navigate("../")
 		}else{
 			toast.error(response.error)

@@ -30,7 +30,7 @@ export const ProjectCardWide = ({
   const navigate = useNavigate();
 
   return(
-    <div onClick={() => navigate(`${projectData.id?`/project/${projectData.id}`:'404'}`)} className="cursor-pointer">
+    <div onClick={() => navigate(`${projectData.id?`/project/${projectData.id}`:'/404'}`)} className="cursor-pointer">
       <div className="w-full mt-4 bg-dark-200 px-5 py-6 pb-10 rounded-lg border border-[#30363D]">
           <div className="w-full flex text-lg dark:text-white font-bold">
             <p className="pr-1">
