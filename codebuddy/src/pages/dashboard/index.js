@@ -54,7 +54,7 @@ const Dashboard = ()=>{
           />
         </div>
       </div>
-      <div className="flex-col w-1/2 mt-12">
+      <div className="flex-col w-1/2 mt-12 flex gap-20">
         <RecommendedProjects
           projectsList={
             recommendedProjects

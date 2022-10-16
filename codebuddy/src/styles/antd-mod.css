@@ -1,13 +1,13 @@
 html {
-  --antd-card-background: var(--white);
-  --antd-card-foreground: var(--dark-200);
-  --antd-card-border: var(--light-200);
-  --scrollbar-bg: var(--lightblue-100);
-  --github-bg: #ebedf0;
-  --github-strength-1: #9be9a8;
-  --github-strength-2: #40c463;
-  --github-strength-3: #30a14e;
-  --github-strength-4: #216e39;
+  --antd-card-background: var(--dark-200);
+  --antd-card-foreground: var(--white);
+  --antd-card-border: var(--dark-100);
+  --scrollbar-bg: var(--dark-300);
+  --github-bg: var(--dark-200);
+  --github-strength-1: #0e4429;
+  --github-strength-2: #006d32;
+  --github-strength-3: #26a641;
+  --github-strength-4: #39d353;
 }
 
 html.dark {

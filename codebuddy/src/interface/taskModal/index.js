@@ -1,6 +1,11 @@
 import { rgbToHex } from "@mui/material";
 import { Modal, Avatar } from "antd";
-const TaskModal = ({ visible, setVisible }) => {
+import {SkillTag} from "../../components/skillTag/index"
+
+export const TaskModal = ({ 
+  visible=false, 
+  setVisible=()=>{} 
+}) => {
   const hideModal = () => {
     setVisible(false);
   };
@@ -58,14 +63,8 @@ const TaskModal = ({ visible, setVisible }) => {
             Tech stack
           </h1>
           <div className="flex flex-row gap-2">
-            {["NodeJS", "React", "MERN"].map((ele) => (
-              <span
-                className="text-dark-300 font-semibold text-xs dark:text-white py-1 px-3"
-                style={{ backgroundColor: "rgb(44,46,51)", borderRadius: 40 }}
-              >
-                {" "}
-                {ele}{" "}
-              </span>
+            {["NodeJS", "React", "MERN"].map((tag,i) => (
+              <SkillTag tagValue={tag} key={i} />
             ))}
           </div>
         </div>
@@ -100,5 +99,3 @@ const TaskModal = ({ visible, setVisible }) => {
     </Modal>
   );
 };
-
-export default TaskModal;

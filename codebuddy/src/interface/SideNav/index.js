@@ -1,5 +1,6 @@
 import { NavLinks, NavLink } from "../NavLinks/index";
 import { LogoutModal  } from "../LogoutModal/index";
+import { ProjectModal  } from "../../components/AddProjectModal/index";
 import { FiLogOut } from "react-icons/fi";
 // import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -10,6 +11,7 @@ const SideNav = ({isLoggedIn }) => {
   const location = useLocation();	
   const navigate = useNavigate();
   const [showSignOutModal, setShowSignOutModal] = useState(false);
+  const [showProjectModal, setShowProjectModal] = useState(false);
   
   // console.log(location)
 
@@ -21,6 +23,10 @@ const SideNav = ({isLoggedIn }) => {
         visible={showSignOutModal}
         setVisible={setShowSignOutModal}
       />
+      <ProjectModal
+        visible={showProjectModal}
+        setVisible={setShowProjectModal}
+      />
       <div className="transition absolute h-full w-screen top-0 right-0 bg-dark-200"></div>
       <div className="relative w-full">
         <div className="w-full flex items-center justify-center text-dark-400">
@@ -28,7 +34,7 @@ const SideNav = ({isLoggedIn }) => {
           CodeBuddy 
          </h2>
         </div>
-        <NavLinks isEmployer={false} isLoggedIn={isLoggedIn} />
+        <NavLinks isLoggedIn={isLoggedIn} projectModVis={showProjectModal} setProjectModVis={setShowProjectModal} />
       </div>
       {isLoggedIn && (
         <div className="relative w-full border-t border-light-100 dark:border-dark-100 pt-4">

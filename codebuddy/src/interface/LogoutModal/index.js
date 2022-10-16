@@ -24,10 +24,11 @@ export const LogoutModal = ({ visible, setVisible }) => {
       onCancel={hideModal}
       okText="Sign Out"
       cancelText="Cancel"
+      cancelButtonProps={{ type: "text", className:'text-[#A6A7AB]' }}
     >
       <div className="flex flex-row gap-4 items-center">
         <FiAlertTriangle className="text-orange-200 text-2xl" />
-        <h1 className="text-dark-300 dark:text-white text-2xl font-semibold">
+        <h1 className="text-white text-2xl font-semibold">
           {"You're about to Sign Out!"}
         </h1>
       </div>
