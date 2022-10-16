@@ -29,7 +29,7 @@ const Dashboard = ()=>{
 	return (
     <div className="flex gap-6 flex-row px-8 py-12 pr-24">
       <div className="w-full">
-        <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
+        <h3 className="text-2xl font-bold text-white">
           Tasks
         </h3>
         <div className="flex-col px-2 py-2 mt-4">
@@ -67,7 +67,7 @@ const Dashboard = ()=>{
                   ]
             }
           />
-        </div>
+        </div>``
       </div>
       <div className="flex-col w-1/2 mt-12 flex gap-20">
         <RecommendedProjects

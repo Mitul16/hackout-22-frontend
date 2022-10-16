@@ -10,7 +10,7 @@ export const ProjectCardSmall = ({
           <div className="w-full flex text-lg dark:text-white font-bold">
             {projectData.name? projectData.name : "Name"}
           </div>
-          <div className="w-full flex text-sm dark:text-light-100">
+          <div className="w-full flex text-sm text-light-100 line-clamp-2">
             {projectData.description? projectData.description : "Description"}
           </div>
           <div className="w-full flex gap-1 mt-3">
@@ -31,13 +31,21 @@ export const ProjectCardWide = ({
 
   return(
     <div onClick={() => navigate(`${projectData._id?`/project/${projectData._id}`:'/404'}`)} className="cursor-pointer">
+<<<<<<< HEAD
       <div className="w-full mt-4 bg-dark-200 px-5 py-6 pb-10 rounded-lg border border-[#30363D] h-full" >
+=======
+      <div className="w-full mt-4 bg-dark-200 px-5 py-6 pb-10 rounded-lg border border-[#30363D]">
+>>>>>>> f7d284dfb5d205f614e50adeacf7e5021627a586
           <div className="w-full flex text-lg dark:text-white font-bold">
             <p className="pr-1">
                 {projectData.name? projectData.name : "Project Title"}
             </p>
           </div>
+<<<<<<< HEAD
           <div className="w-full flex text-sm dark:text-light-200 line-clamp-4">
+=======
+          <div className="w-full flex text-sm dark:text-light-200 line-clamp-3">
+>>>>>>> f7d284dfb5d205f614e50adeacf7e5021627a586
             {projectData.description? projectData.description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."}
           </div>
           <div className="w-full flex gap-1 mt-3 align-bottom">

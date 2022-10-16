@@ -43,7 +43,7 @@ const Project = () => {
   return (
     <div className="flex gap-6 flex-row px-8 py-12 pr-24">
       <div className="w-full">
-        <h3 className="text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white text-2xl font-bold dark:text-white">
+        <h3 className="text-2xl font-bold text-white">
           Projects
         </h3>
         <div className="flex-row flex w-full mt-6 gap-5">
