@@ -148,7 +148,7 @@ export const NavLinks = ({ isLoggedIn, projectModVis, setProjectModVis }) => {
               standAlone={true}
               isSelected={false}
               visible={projectModVis}
-              setVisible={() => setProjectModVis(true) }
+              onClick={() => setProjectModVis(true) }
             />
             <p className="items-center align-center text-[#A6A7AB] my-2 mx-0">or</p>
             <NavLinkBtn
